@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+*.log
+.npm
+
+# Editores
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+.env.local
+*.local
+
+# Segredos — nunca commitar
+secrets/
+credentials.json
+*.pem
+*.key
+
+# Artefatos temporários
+tmp/
+.cache/
+*.tmp
+
+# Cobertura de testes
+coverage/
+.coverage
+htmlcov/
+
+# Claude Code — dados locais da máquina
+.claude/settings.local.json
+memory/

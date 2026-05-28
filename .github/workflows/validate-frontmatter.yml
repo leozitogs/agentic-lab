@@ -1,0 +1,20 @@
+name: Validate front-matter
+
+# Workflow placeholder. Implementar quando o repo for público.
+# Objetivo: validar que todo .md em build/, cases/, ops/decisions/ tem front-matter
+# com tipo, maturidade, versao e que valores estão dentro do vocabulário definido em ops/TAGS.md.
+
+on:
+  pull_request:
+    paths:
+      - 'build/**/*.md'
+      - 'cases/**/*.md'
+      - 'ops/decisions/**/*.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder
+        run: echo "TODO: implementar validador de front-matter conforme ops/TAGS.md"
