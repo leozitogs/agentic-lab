@@ -108,6 +108,8 @@ nav:
           - Eval como código · research-analyst: build/evaluations/research-analyst/README.md
           - Kit de RAG · recuperação: build/evaluations/rag-recuperacao/README.md
           - Kit de RAG · relatório: build/evaluations/rag-recuperacao/results/report.md
+          - Kit de prompt injection: build/evaluations/prompt-injection/README.md
+          - Kit de prompt injection · relatório: build/evaluations/prompt-injection/results/report.md
           - Eval manual · research-analyst v0.1.0: build/evaluations/eval-research-analyst-v0.1.0.md
       - Templates:
           - Prompt: build/prompts/PROMPT-TEMPLATE.md
@@ -127,6 +129,7 @@ nav:
           - ADR-0001 · Estrutura do repositório: ops/decisions/ADR-0001-estrutura-do-repo.md
           - ADR-0002 · Trilha avançada: ops/decisions/ADR-0002-trilha-avancada.md
           - ADR-0003 · Recuperação padrão para RAG: ops/decisions/ADR-0003-recuperacao-padrao-rag.md
+          - ADR-0004 · Mitigações padrão para agentes com ferramentas: ops/decisions/ADR-0004-mitigacoes-prompt-injection.md
       - Segurança:
           - ops/security/README.md
           - Checklist: ops/security/checklist.md

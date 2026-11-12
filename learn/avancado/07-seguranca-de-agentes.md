@@ -1,7 +1,7 @@
 ---
 tipo: guide
 maturidade: draft
-versao: 0.2.0
+versao: 0.2.1
 autores: [leozitogs]
 criado_em: 2026-11-12
 atualizado_em: 2026-11-12
@@ -45,6 +45,12 @@ Escolha pelo menos duas e compare no mesmo exercício. O objetivo é entender o 
 ## Exercício
 
 Monte um agente de exemplo com acesso a e-mail fictício e tente quebrá-lo com injeção indireta. Depois aplique mitigações e repita.
+
+## Kit pronto
+
+O exercício já tem uma versão de referência em [`build/evaluations/prompt-injection/`](../../build/evaluations/prompt-injection/README.md): um agente de e-mail com laço de tool-calling próprio, uma caixa de entrada fictícia, 4 tarefas legítimas e 6 injeções indiretas (instrução no corpo, comentário HTML, assinatura, anexo, urgência falsa e mensagem falsa do sistema). O [relatório](../../build/evaluations/prompt-injection/results/report.md) mede ASR e utilidade, antes e depois de quatro mitigações da literatura (spotlighting, menor privilégio com aprovação humana, filtro de URLs na saída e dual LLM), isoladas e combinadas, num modelo local via Ollama. Na rodada registrada, a linha de base teve ASR 0.23 (todo ele por link ou imagem markdown na resposta); o filtro de saída sozinho levou a 0.00, o spotlighting a 0.04, e a combinação das quatro chegou a ASR 0.00 sem nenhuma tentativa, com utilidade sem ataque de 1.00. As mitigações padrão resultantes estão na [ADR-0004](../../ops/decisions/ADR-0004-mitigacoes-prompt-injection.md), e o [checklist de segurança](../../ops/security/checklist.md) ganhou uma seção para agentes com ferramentas.
+
+Use o kit como molde: troque as ferramentas e as tarefas pelas do seu agente, escreva injeções para os canais que ele lê e rode de novo. A comparação com guardrails prontos (NeMo Guardrails, Llama Guard, Guardrails AI) que o módulo pede ainda não está no kit.
 
 ## Critério de aceite
 

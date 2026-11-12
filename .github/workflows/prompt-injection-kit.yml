@@ -1,0 +1,41 @@
+name: Prompt injection kit
+
+# Kit de prompt injection do módulo 07 (build/evaluations/prompt-injection/).
+# Testes leves: ambiente fictício, ferramentas simuladas, critérios de ASR e
+# utilidade, cada mitigação e um modelo falso "ingênuo" que obedece às injeções.
+# Só biblioteca padrão, sem Ollama e sem rede. A avaliação completa usa um
+# modelo local (Ollama) e roda fora da CI; o README do kit explica como.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'build/evaluations/prompt-injection/**'
+      - '.github/workflows/prompt-injection-kit.yml'
+  pull_request:
+    paths:
+      - 'build/evaluations/prompt-injection/**'
+      - '.github/workflows/prompt-injection-kit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: build/evaluations/prompt-injection
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testes leves (sem modelo, sem rede)
+        run: python -m unittest discover -s tests -v
+      - name: Relatório regenera a partir de results.json
+        run: |
+          python run_eval.py --report-only
+          git diff --exit-code -- results/report.md

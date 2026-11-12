@@ -41,6 +41,13 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - Relatório gerado por script com recall@k, MRR, intervalos de confiança e análise de erros; testes leves e avaliação completa sob demanda na CI.
 - ADR-0003 adotando BM25 com chunks por estrutura como recuperação padrão para RAG sobre documentação.
 
+### 0.2.5 — Kit de prompt injection
+
+- `build/evaluations/prompt-injection/`: agente de e-mail com laço de tool-calling próprio sobre uma caixa fictícia, 4 tarefas legítimas e 6 injeções indiretas (corpo, comentário HTML, assinatura, anexo, urgência falsa, mensagem falsa do sistema).
+- ASR e utilidade medidos com critérios determinísticos, no modelo local (Ollama), para a linha de base e quatro mitigações da literatura (spotlighting, menor privilégio com aprovação humana, filtro de URLs na saída, dual LLM), isoladas e combinadas.
+- Relatório gerado por script; testes leves com um modelo falso que obedece às injeções, rodando na CI.
+- ADR-0004 com as mitigações padrão para agentes com ferramentas; checklist de segurança atualizado.
+
 ## Próximos marcos
 
 ### 0.3.0 — Biblioteca de prompts
@@ -59,7 +66,7 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 
 ### 0.6.0 — Kits de segurança e operação
 
-- Agente de exemplo para exercícios de prompt injection, com mitigações (módulo 7).
+- Comparação de guardrails prontos (NeMo Guardrails, Llama Guard) sobre o kit de prompt injection, e ataques adaptativos contra as mitigações (módulo 7).
 - Exemplo instrumentado com tracing e painel de custo (módulo 8).
 - Comparação entre LLM via API, modelo aberto e classificador clássico (módulo 9).
 
