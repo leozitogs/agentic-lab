@@ -98,7 +98,7 @@ Se você acabou de chegar, leia nesta ordem:
 
 ## Status
 
-Versão atual: `0.2.1`: trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI e o primeiro [eval como código](build/evaluations/research-analyst/README.md).
+Versão atual: `0.2.2`: trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI, o primeiro [eval como código](build/evaluations/research-analyst/README.md) e o primeiro [servidor MCP](build/mcp-servers/repo-knowledge/README.md).
 Próximo marco: ver `ROADMAP.md`.
 
 ## Licença

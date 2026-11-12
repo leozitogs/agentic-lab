@@ -44,3 +44,6 @@ htmlcov/
 # Claude Code — dados locais da máquina
 .claude/settings.local.json
 memory/
+
+# Saídas de build dos pacotes Python em build/mcp-servers/
+build/mcp-servers/*/build/

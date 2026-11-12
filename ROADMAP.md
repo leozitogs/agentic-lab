@@ -24,6 +24,12 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - Validador de front-matter (`scripts/validate_frontmatter.py`) com testes, rodando em todo push e PR.
 - Eval como código do `research-analyst` em `build/evaluations/research-analyst/`: suíte promptfoo com 5 casos, asserções determinísticas testadas contra saídas de referência e `llm-rubric` para o que exige julgamento.
 
+### 0.2.2 — Primeiro MCP server
+
+- `build/mcp-servers/repo-knowledge/` implementado com o SDK oficial: 3 tools somente leitura, 7 resources e 2 prompts.
+- Testes de catálogo, de protocolo e de ida e volta por stdio, rodando na CI em Linux e Windows.
+- Análise de segurança em `ops/security/repo-knowledge-mcp.md`.
+
 ## Próximos marcos
 
 ### 0.3.0 — Biblioteca de prompts
@@ -34,7 +40,7 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 ### 0.4.0 — Skills e MCP
 
 - 2 skills com `SKILL.md`, exemplos e testes.
-- 1 MCP server simples e auditado, com checklist de human-in-the-loop validado.
+- Um MCP com tool de escrita protegida por confirmação humana (human-in-the-loop).
 
 ### 0.5.0 — Kits de recuperação e avaliação
 

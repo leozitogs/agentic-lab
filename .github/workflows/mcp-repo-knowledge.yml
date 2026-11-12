@@ -1,0 +1,40 @@
+name: MCP repo-knowledge
+
+# Testa o servidor MCP repo-knowledge: catálogo, protocolo em processo e
+# um cliente MCP real falando com o servidor por stdio, em Linux e Windows.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'build/mcp-servers/repo-knowledge/**'
+      - '.github/workflows/mcp-repo-knowledge.yml'
+  pull_request:
+    paths:
+      - 'build/mcp-servers/repo-knowledge/**'
+      - '.github/workflows/mcp-repo-knowledge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: build/mcp-servers/repo-knowledge
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Instalar
+        run: python -m pip install .
+      - name: Testes
+        run: python -m unittest discover -s tests -v

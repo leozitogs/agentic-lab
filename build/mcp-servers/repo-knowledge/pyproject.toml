@@ -1,0 +1,18 @@
+[project]
+name = "repo-knowledge-mcp"
+version = "0.2.0"
+description = "Read-only MCP server that exposes the agentic-lab artifacts."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dependencies = ["mcp==2.3.0"]
+
+[project.scripts]
+repo-knowledge = "repo_knowledge_server.server:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["repo_knowledge_server"]
