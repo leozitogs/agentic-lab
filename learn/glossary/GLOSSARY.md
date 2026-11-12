@@ -4,7 +4,7 @@ maturidade: tested
 versao: 0.1.0
 autores: [time]
 criado_em: 2026-05-28
-atualizado_em: 2026-05-28
+atualizado_em: 2026-11-12
 ---
 
 # Glossário
@@ -104,6 +104,56 @@ Linguagem comum do time. Quando alguém usa um termo aqui, ele significa exatame
 **Tool misuse.** Risco de o agente usar uma tool de forma indevida (deletar arquivo errado, gastar crédito, etc.).
 
 **Confused deputy.** Ataque onde o agente é manipulado para executar ação em nome de outro.
+
+## Padrões e arquitetura
+
+**Workflow.** Sequência de passos definida no código, em que o LLM executa partes mas não decide o caminho.
+
+**Orchestrator-workers.** Um modelo divide a tarefa e distribui partes para outros, depois junta os resultados.
+
+**Evaluator-optimizer.** Um modelo gera, outro avalia, e o ciclo repete até passar no critério.
+
+**Structured output.** Saída do modelo forçada a seguir um schema (ex.: JSON Schema).
+
+**Agente de código.** Assistente que lê, escreve e executa código num repositório, com revisão humana.
+
+## Recuperação
+
+**Busca híbrida.** Combinação de busca lexical (ex.: BM25) com busca por embeddings.
+
+**Reranker.** Modelo que reordena os resultados de uma busca pela relevância para a pergunta.
+
+**RRF (Reciprocal Rank Fusion).** Forma simples de juntar vários rankings somando 1/(k + posição) de cada um.
+
+**GraphRAG.** RAG que organiza o conhecimento como grafo de entidades e relações.
+
+## Avaliação e operação
+
+**LLM como juiz.** Uso de um modelo para avaliar respostas de outro. Precisa ser calibrado contra avaliação humana.
+
+**Red teaming.** Busca deliberada de entradas que fazem o sistema falhar ou se comportar mal.
+
+**pass@k.** Probabilidade de pelo menos uma de k tentativas passar nos testes.
+
+**Tracing.** Registro de cada chamada de modelo e de ferramenta de uma execução, para investigar o que aconteceu.
+
+**Prompt caching.** Reaproveitamento de prefixos de prompt já processados para reduzir custo e latência.
+
+## Segurança
+
+**Prompt injection indireta.** Instrução maliciosa escondida em conteúdo que o agente lê (página, e-mail, documento).
+
+**Menor privilégio.** O agente recebe só as permissões mínimas para a tarefa.
+
+**Sandbox.** Ambiente isolado onde o agente executa código sem acesso ao sistema real.
+
+## Modelos
+
+**Quantização.** Redução da precisão numérica dos pesos para o modelo caber em menos memória.
+
+**LoRA.** Técnica de fine-tuning que treina poucas matrizes adicionais em vez do modelo inteiro.
+
+**Destilação.** Treinar um modelo pequeno para imitar um grande.
 
 ## Processo interno
 

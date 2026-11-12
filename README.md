@@ -1,7 +1,7 @@
 # agentic-lab
 
-> Laboratório aberto de **arquitetura de prompts**, **skills** e **MCP servers**.
-> Tudo que aprendemos vira artefato reutilizável.
+> Laboratório aberto de **engenharia de IA**.
+> Da arquitetura de prompts a agentes em produção: tudo que aprendemos vira artefato reutilizável.
 
 ## O que é isso
 
@@ -18,13 +18,51 @@ A regra fundadora é simples: **toda coisa que entra aqui precisa responder seis
 
 Se a resposta a alguma delas for "não sei", o artefato ainda não está pronto pra entrar.
 
+## Objeto de estudo
+
+O laboratório estuda como **construir sistemas com IA que dá para confiar**: que resolvem o problema, mostram de onde tiraram cada informação, respeitam limites e são medidos.
+
+### Trilha de fundamentos · 8 semanas · [`learn/roadmap/`](learn/roadmap/00-overview.md)
+
+Fundamentos de LLMs e agentes, arquitetura de prompts, avaliações, skills, MCP (do protocolo ao servidor útil), segurança e um projeto integrador.
+
+### Trilha avançada · 11 módulos de ritmo livre · [`learn/avancado/`](learn/avancado/README.md)
+
+| Base | Aprofundamento (qualquer ordem) | Fechamento |
+|---|---|---|
+| 01 Padrões de agentes | 05 Agentes de código no dia a dia | 11 Projeto integrador |
+| 02 Ferramentas e saídas estruturadas | 06 Avaliação e red teaming | |
+| 03 RAG e recuperação | 07 Segurança de agentes | |
+| 04 Memória e estado | 08 Observabilidade e LLMOps | |
+| | 09 Modelos abertos e otimização | |
+| | 10 Multimodal | |
+
+Todo módulo compara **pelo menos duas ferramentas** no mesmo exercício e usa só **dados públicos ou sintéticos**.
+
+## Ferramentas comparadas
+
+O laboratório não adota uma stack única: compara alternativas e registra a escolha em ADR.
+
+| Frente | Alternativas estudadas |
+|---|---|
+| Agentes e orquestração | OpenAI Agents SDK, Claude Agent SDK, LangGraph, CrewAI, AutoGen |
+| Ferramentas e protocolos | MCP, function calling, Instructor, Pydantic AI |
+| Recuperação | pgvector, Qdrant, Chroma, OpenSearch, LlamaIndex, rerankers |
+| Memória | Mem0, Letta, checkpointers |
+| Agentes de código | Claude Code, Codex CLI, Cursor, GitHub Copilot, Aider |
+| Avaliação | promptfoo, Inspect, DeepEval, RAGAS, LangSmith |
+| Segurança | NeMo Guardrails, Guardrails AI, Llama Guard, sandboxes |
+| Observabilidade | OpenTelemetry, Langfuse, Arize Phoenix, Helicone |
+| Modelos | APIs da Anthropic, OpenAI e Gemini; Ollama, llama.cpp, vLLM, Hugging Face, Unsloth |
+| Multimodal | Whisper, Docling, Unstructured, OCR |
+
 ## Como o repo está organizado
 
 A arquitetura separa **aprender** de **produzir**, e marca cada arquivo com uma **tag de tipo** (ver `ops/TAGS.md`).
 
 ```
 agentic-lab/
-├── learn/        → onde estudamos (roadmap, glossário, notas semanais)
+├── learn/        → onde estudamos (roadmap, trilha avançada, glossário, notas)
 ├── build/        → onde produzimos (prompts, skills, MCP servers, evals)
 ├── cases/        → onde aplicamos (estudos de caso reais)
 ├── ops/          → como nos organizamos (decisões, segurança, contribuição)
@@ -60,7 +98,7 @@ Se você acabou de chegar, leia nesta ordem:
 
 ## Status
 
-Versão atual: `0.1.0` (MVP de estrutura).
+Versão atual: `0.2.0` (trilha avançada em módulos; ver [ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)).
 Próximo marco: ver `ROADMAP.md`.
 
 ## Licença

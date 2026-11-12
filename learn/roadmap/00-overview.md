@@ -1,10 +1,10 @@
 ---
 tipo: guide
 maturidade: reviewed
-versao: 0.1.0
+versao: 0.2.0
 autores: [time]
 criado_em: 2026-05-28
-atualizado_em: 2026-05-28
+atualizado_em: 2026-11-12
 ---
 
 # Roteiro de 8 semanas
@@ -54,3 +54,7 @@ Toda sexta-feira, reunião de 60 minutos:
 ## Não cumprir uma semana
 
 Acontece. A regra é: **registre o motivo**. Crie nota em `learn/notes/` explicando o que travou, e use a próxima semana pra recuperar ou ajustar o plano.
+
+## Depois das 8 semanas
+
+A continuação está na **trilha avançada**, em [`learn/avancado/`](../avancado/README.md): 11 módulos de ritmo livre sobre padrões de agentes, ferramentas e saídas estruturadas, RAG, memória, agentes de código, avaliação e red teaming, segurança, observabilidade, modelos abertos, multimodal e um projeto integrador.
