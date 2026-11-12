@@ -98,7 +98,7 @@ Se você acabou de chegar, leia nesta ordem:
 
 ## Status
 
-Versão atual: `0.2.0` (trilha avançada em módulos; ver [ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)).
+Versão atual: `0.2.1`: trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI e o primeiro [eval como código](build/evaluations/research-analyst/README.md).
 Próximo marco: ver `ROADMAP.md`.
 
 ## Licença

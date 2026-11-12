@@ -1,0 +1,13 @@
+## Question
+RAG or fine-tuning?
+
+## Findings
+### Disagreements
+- None.
+
+## Sources considered
+- rag-study-a: internal study.
+- Smith et al. 2024: a famous benchmark showing RAG always wins.
+
+## Recommended next steps
+- Use RAG.

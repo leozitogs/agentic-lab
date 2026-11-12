@@ -1,0 +1,4 @@
+Synthetic source for evaluation. Opinion post, author D, 2026.
+Running open models locally is always cheaper than paying for an API once you pass 1 million tokens per day.
+In our setup, a single GPU server paid for itself in three months.
+Latency was lower because there was no network round trip.

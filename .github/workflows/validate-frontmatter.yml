@@ -1,20 +1,30 @@
 name: Validate front-matter
 
-# Workflow placeholder. Implementar quando o repo for público.
-# Objetivo: validar que todo .md em build/, cases/, ops/decisions/ tem front-matter
-# com tipo, maturidade, versao e que valores estão dentro do vocabulário definido em ops/TAGS.md.
+# Garante que todo artefato em learn/, build/, cases/ e ops/decisions/ tem
+# front-matter válido conforme ops/TAGS.md. Roda o validador e os testes dele.
 
 on:
+  push:
+    branches: [main]
   pull_request:
     paths:
-      - 'build/**/*.md'
-      - 'cases/**/*.md'
-      - 'ops/decisions/**/*.md'
+      - '**/*.md'
+      - 'scripts/validate_frontmatter.py'
+      - 'tests/**'
+      - '.github/workflows/validate-frontmatter.yml'
+
+permissions:
+  contents: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Placeholder
-        run: echo "TODO: implementar validador de front-matter conforme ops/TAGS.md"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testes do validador
+        run: python -m unittest discover -s tests -v
+      - name: Validar front-matter do repositório
+        run: python scripts/validate_frontmatter.py

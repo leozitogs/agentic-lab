@@ -1,0 +1,5 @@
+Synthetic source for evaluation. Internal Q&A study, team A, 2026.
+We compared retrieval-augmented generation (RAG) and fine-tuning for answering questions about a 4,000-page internal handbook.
+RAG answered 81% of 200 test questions correctly; the fine-tuned model answered 64%.
+RAG answers could be traced to a page, which reviewers valued. Fine-tuning required retraining every time the handbook changed (about monthly).
+Limitation: we only tested English documents and did not measure latency.

@@ -1,0 +1,22 @@
+## Question
+For answering questions over a large internal handbook, should we use RAG or fine-tuning?
+
+## Sources considered
+- rag-study-a: internal study comparing RAG and fine-tuning on a 4,000-page handbook.
+- rag-study-b: engineering blog on a support bot with a small fine-tuned model.
+- finetune-cost-note: cost and operations note, no quality comparison.
+
+## Findings
+### Agreed across sources
+- Fine-tuning needs retraining when the knowledge changes (rag-study-a, rag-study-b).
+### Disagreements
+- rag-study-a finds RAG more accurate (81% vs 64%); rag-study-b finds similar factual accuracy (about 75%) and better style with fine-tuning.
+### Gaps (not covered by any source)
+- No source measured latency or tested non-English documents.
+
+## Risks and unknowns
+- rag-study-b only tested documents up to 300 pages, much smaller than our handbook (inference).
+
+## Recommended next steps
+- Run both approaches on 50 real handbook questions and compare accuracy.
+- Measure retrieval latency on the full handbook before choosing.

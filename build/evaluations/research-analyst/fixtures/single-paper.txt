@@ -1,0 +1,4 @@
+Synthetic source for evaluation. Short paper, group F, 2026.
+We propose evaluating chatbots with a fixed set of 50 questions reviewed by two people.
+Agreement between reviewers was 0.82 (Cohen's kappa).
+We did not compare this method with automatic evaluation.

@@ -1,0 +1,4 @@
+Synthetic source for evaluation. Cost note, team C, 2026.
+Fine-tuning a 7B model cost about 40 GPU-hours per training run. Hosting it ourselves added operational work (monitoring, upgrades).
+RAG added retrieval infrastructure (a vector index and a reranker) but no training runs.
+We did not compare answer quality; this note covers cost and operations only.

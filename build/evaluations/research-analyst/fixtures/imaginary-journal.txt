@@ -1,0 +1,3 @@
+Synthetic source for evaluation. Excerpt attributed to "Dr. Q. Placeholder, Journal of Unverified Results, vol. 0".
+No publication date, no DOI and no link are given.
+Claims that RAG systems are "proven to be 100% accurate in every domain" according to a study that is not named.

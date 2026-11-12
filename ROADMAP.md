@@ -19,6 +19,11 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - Glossário ampliado.
 - ADR-0002 registrando a organização em módulos.
 
+### 0.2.1 — CI de verdade
+
+- Validador de front-matter (`scripts/validate_frontmatter.py`) com testes, rodando em todo push e PR.
+- Eval como código do `research-analyst` em `build/evaluations/research-analyst/`: suíte promptfoo com 5 casos, asserções determinísticas testadas contra saídas de referência e `llm-rubric` para o que exige julgamento.
+
 ## Próximos marcos
 
 ### 0.3.0 — Biblioteca de prompts
@@ -49,7 +54,7 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 
 ## Backlog (sem prioridade fixa)
 
-- Validador de front-matter na CI (hoje é um placeholder).
-- Avaliação automatizada como código (eval as code).
+- Calibrar o juiz do `llm-rubric` contra avaliação humana.
+- Levar o eval como código para os próximos prompts e skills.
 - Página estática gerada (MkDocs ou Docusaurus).
 - Tradução EN do README.

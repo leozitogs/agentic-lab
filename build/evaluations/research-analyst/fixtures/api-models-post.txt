@@ -1,0 +1,4 @@
+Synthetic source for evaluation. Opinion post, author E, 2026.
+Self-hosting models is rarely cheaper once you count engineering time, idle GPUs and upgrades.
+We moved back to an API after six months because our usage was spiky: GPUs sat idle 70% of the time.
+API prompt caching cut our bill by about 40%.

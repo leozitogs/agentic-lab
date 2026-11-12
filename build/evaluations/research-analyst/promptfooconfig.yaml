@@ -1,0 +1,74 @@
+# Eval como código do prompt build/prompts/system/research-analyst.md
+# Rodar (precisa de ANTHROPIC_API_KEY):
+#   npx promptfoo@0.125.1 eval -c build/evaluations/research-analyst/promptfooconfig.yaml
+# Os 5 casos espelham o conjunto de teste de build/evaluations/eval-research-analyst-v0.1.0.md.
+
+description: research-analyst v0.1.0
+
+prompts:
+  - id: file://prompt.py:research_analyst
+    label: research-analyst
+
+providers:
+  - id: anthropic:messages:claude-sonnet-5-5
+    label: sonnet
+    config: { temperature: 0.3, max_tokens: 1500 }
+  - id: anthropic:messages:claude-haiku-5-5
+    label: haiku
+    config: { temperature: 0.3, max_tokens: 1500 }
+
+defaultTest:
+  options:
+    provider: anthropic:messages:claude-opus-5-5   # juiz das asserções llm-rubric
+
+tests:
+  - description: "1 · feliz: 3 fontes sobre RAG vs fine-tuning"
+    vars:
+      question: For answering questions over a large internal handbook, should we use RAG or fine-tuning?
+      sources: rag-study-a, rag-study-b, finetune-cost-note
+    assert:
+      - { type: python, value: file://checks.py:has_structure, metric: estrutura }
+      - { type: python, value: file://checks.py:only_given_sources, metric: nao-inventa-fontes }
+      - { type: python, value: file://checks.py:names_disagreements, metric: discordancias }
+      - { type: python, value: file://checks.py:actionable_next_steps, metric: acionabilidade }
+      - { type: python, value: file://checks.py:under_word_limit, metric: concisao }
+      - type: llm-rubric
+        metric: atribuicao
+        value: Every non-trivial claim in Findings is attributed to one of the named sources (rag-study-a, rag-study-b, finetune-cost-note) or explicitly marked as inference.
+
+  - description: "2 · borda: 2 posts em conflito sobre custo de modelo local"
+    vars:
+      question: Is self-hosting open models cheaper than using an API?
+      sources: local-models-post, api-models-post
+    assert:
+      - { type: python, value: file://checks.py:has_structure, metric: estrutura }
+      - { type: python, value: file://checks.py:names_disagreements, metric: discordancias }
+      - type: llm-rubric
+        metric: discordancias
+        value: The answer states explicitly that the two sources disagree, says which source holds which position, and does not declare a winner without evidence. It notes that both are opinion posts.
+
+  - description: "3 · adversarial: uma fonte só"
+    vars:
+      question: Is human review a good way to evaluate chatbots?
+      sources: single-paper
+    assert:
+      - type: llm-rubric
+        metric: fonte-unica
+        value: The answer acknowledges that only one source was provided and does not invent agreements or disagreements between sources that do not exist. A summary with gaps and next steps is acceptable.
+
+  - description: "4 · adversarial: uma fonte não verificável"
+    vars:
+      question: How accurate are RAG systems in practice?
+      sources: rag-study-a, rag-study-b, imaginary-journal
+    assert:
+      - { type: python, value: file://checks.py:only_given_sources, metric: nao-inventa-fontes }
+      - type: llm-rubric
+        metric: fonte-nao-verificavel
+        value: The answer treats the imaginary-journal source as unverifiable or low credibility, and does not present its "100% accurate" claim as an established fact.
+
+  - description: "5 · borda: entrada vazia"
+    vars:
+      question: ""
+      sources: ""
+    assert:
+      - { type: python, value: file://checks.py:asks_clarification, metric: clarificacao }

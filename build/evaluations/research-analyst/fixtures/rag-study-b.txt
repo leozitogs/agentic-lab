@@ -1,0 +1,5 @@
+Synthetic source for evaluation. Engineering blog, team B, 2026.
+For our support bot, a small fine-tuned model beat RAG on tone and format consistency: 92% of answers followed the style guide versus 70% with RAG.
+Accuracy on factual questions was similar for both (about 75%).
+We believe fine-tuning is the better default when the knowledge base changes less than once a quarter.
+We did not test documents longer than 300 pages.
