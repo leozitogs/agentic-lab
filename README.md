@@ -2,6 +2,8 @@
 
 > Laboratório aberto de **engenharia de IA**.
 > Da arquitetura de prompts a agentes em produção: tudo que aprendemos vira artefato reutilizável.
+>
+> 📖 Leia como site: **[leozitogs.github.io/agentic-lab](https://leozitogs.github.io/agentic-lab/)**
 
 ## O que é isso
 
@@ -98,7 +100,7 @@ Se você acabou de chegar, leia nesta ordem:
 
 ## Status
 
-Versão atual: `0.2.2`: trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI, o primeiro [eval como código](build/evaluations/research-analyst/README.md) e o primeiro [servidor MCP](build/mcp-servers/repo-knowledge/README.md).
+Versão atual: `0.2.3`: [site no GitHub Pages](https://leozitogs.github.io/agentic-lab/), trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI, o primeiro [eval como código](build/evaluations/research-analyst/README.md) e o primeiro [servidor MCP](build/mcp-servers/repo-knowledge/README.md).
 Próximo marco: ver `ROADMAP.md`.
 
 ## Licença

@@ -1,0 +1,130 @@
+site_name: agentic-lab
+site_description: Laboratório aberto de engenharia de IA. Da arquitetura de prompts a agentes em produção.
+site_url: https://leozitogs.github.io/agentic-lab/
+repo_url: https://github.com/leozitogs/agentic-lab
+repo_name: leozitogs/agentic-lab
+edit_uri: ""
+copyright: Apache License 2.0 · conteúdo do agentic-lab
+
+# O conteúdo vive na raiz do repositório; scripts/build_site.py copia para cá.
+docs_dir: _site_src
+site_dir: _site
+
+theme:
+  name: material
+  language: pt-BR
+  font:
+    text: Montserrat
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle: { icon: material/weather-sunny, name: Tema claro }
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle: { icon: material/weather-night, name: Tema escuro }
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search:
+      lang: pt
+
+validation:
+  links:
+    not_found: warn
+    anchors: info
+  omitted_files: info
+
+nav:
+  - Início:
+      - README.md
+      - Roadmap: ROADMAP.md
+  - Fundamentos:
+      - Visão geral: learn/roadmap/00-overview.md
+      - Semana 1 · Fundamentos: learn/roadmap/01-fundamentos.md
+      - Semana 2 · Arquitetura de prompts: learn/roadmap/02-arquitetura-de-prompts.md
+      - Semana 3 · Avaliações: learn/roadmap/03-avaliacoes.md
+      - Semana 4 · Skills: learn/roadmap/04-skills.md
+      - Semana 5 · MCP fundamentos: learn/roadmap/05-mcp-fundamentos.md
+      - Semana 6 · MCP aplicado: learn/roadmap/06-mcp-aplicado.md
+      - Semana 7 · Segurança: learn/roadmap/07-seguranca.md
+      - Semana 8 · Projeto integrador: learn/roadmap/08-projeto-integrador.md
+  - Trilha avançada:
+      - learn/avancado/README.md
+      - 01 · Padrões de agentes: learn/avancado/01-padroes-de-agentes.md
+      - 02 · Ferramentas e saídas estruturadas: learn/avancado/02-ferramentas-e-saidas-estruturadas.md
+      - 03 · RAG e recuperação: learn/avancado/03-rag-e-recuperacao.md
+      - 04 · Memória e estado: learn/avancado/04-memoria-e-estado.md
+      - 05 · Agentes de código: learn/avancado/05-agentes-de-codigo.md
+      - 06 · Avaliação e red teaming: learn/avancado/06-avaliacao-e-red-teaming.md
+      - 07 · Segurança de agentes: learn/avancado/07-seguranca-de-agentes.md
+      - 08 · Observabilidade e LLMOps: learn/avancado/08-observabilidade-e-llmops.md
+      - 09 · Modelos abertos: learn/avancado/09-modelos-abertos-e-otimizacao.md
+      - 10 · Multimodal: learn/avancado/10-multimodal.md
+      - 11 · Projeto integrador: learn/avancado/11-projeto-integrador.md
+  - Artefatos:
+      - Prompts:
+          - Biblioteca: build/prompts/prompt-library.md
+          - research-analyst: build/prompts/system/research-analyst.md
+      - Skills:
+          - research-synthesis: build/skills/research-synthesis/SKILL.md
+          - Exemplos: build/skills/research-synthesis/examples.md
+          - Referências: build/skills/research-synthesis/references.md
+          - Testes: build/skills/research-synthesis/tests.md
+      - MCP:
+          - repo-knowledge: build/mcp-servers/repo-knowledge/README.md
+      - Avaliações:
+          - Eval como código · research-analyst: build/evaluations/research-analyst/README.md
+          - Eval manual · research-analyst v0.1.0: build/evaluations/eval-research-analyst-v0.1.0.md
+      - Templates:
+          - Prompt: build/prompts/PROMPT-TEMPLATE.md
+          - Skill: build/skills/skill-template/SKILL.md
+          - MCP server: build/mcp-servers/mcp-template/README.md
+          - Testes de MCP: build/mcp-servers/mcp-template/tests.md
+          - Avaliação: build/evaluations/EVAL-TEMPLATE.md
+          - Caso: cases/CASE-TEMPLATE.md
+          - ADR: ops/decisions/ADR-TEMPLATE.md
+  - Casos: cases/README.md
+  - Referência:
+      - Glossário: learn/glossary/GLOSSARY.md
+      - Aprendizados semanais: learn/notes/weekly-learnings.md
+      - Tags: ops/TAGS.md
+      - Como contribuir: ops/CONTRIBUTING.md
+      - Decisões:
+          - ADR-0001 · Estrutura do repositório: ops/decisions/ADR-0001-estrutura-do-repo.md
+          - ADR-0002 · Trilha avançada: ops/decisions/ADR-0002-trilha-avancada.md
+      - Segurança:
+          - ops/security/README.md
+          - Checklist: ops/security/checklist.md
+          - repo-knowledge MCP: ops/security/repo-knowledge-mcp.md

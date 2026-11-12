@@ -1,0 +1,38 @@
+/* Paleta do agentic-lab: preto e verde-limão, chapado, sem brilho. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0b0b0b;
+  --md-primary-fg-color--light: #222222;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: #fbfbfb;
+  --md-accent-fg-color: #128a00;
+  --md-typeset-a-color: #0f7a00;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0d0f0d;
+  --md-primary-fg-color: #000000;
+  --md-primary-bg-color: #fbfbfb;
+  --md-accent-fg-color: #19bc00;
+  --md-typeset-a-color: #5fd94a;
+}
+
+.md-header,
+.md-tabs {
+  background-color: #000000;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: #19bc00;
+}
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: rgba(25, 188, 0, 0.12);
+}

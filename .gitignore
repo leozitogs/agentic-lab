@@ -47,3 +47,7 @@ memory/
 
 # Saídas de build dos pacotes Python em build/mcp-servers/
 build/mcp-servers/*/build/
+
+# Site (MkDocs): fonte gerada e saída
+_site_src/
+_site/

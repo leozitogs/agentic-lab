@@ -30,6 +30,11 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - Testes de catálogo, de protocolo e de ida e volta por stdio, rodando na CI em Linux e Windows.
 - Análise de segurança em `ops/security/repo-knowledge-mcp.md`.
 
+### 0.2.3 — Site
+
+- Site com MkDocs Material publicado no GitHub Pages a cada mudança: [leozitogs.github.io/agentic-lab](https://leozitogs.github.io/agentic-lab/).
+- O conteúdo continua na raiz; `scripts/build_site.py` monta as páginas e aponta links de código para o GitHub.
+
 ## Próximos marcos
 
 ### 0.3.0 — Biblioteca de prompts
@@ -62,5 +67,4 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 
 - Calibrar o juiz do `llm-rubric` contra avaliação humana.
 - Levar o eval como código para os próximos prompts e skills.
-- Página estática gerada (MkDocs ou Docusaurus).
 - Tradução EN do README.
