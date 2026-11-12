@@ -13,7 +13,7 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - 1 exemplo preenchido de cada artefato.
 - Licença Apache 2.0.
 
-### 0.2.0 — Trilha avançada (versão atual)
+### 0.2.0 — Trilha avançada
 
 - `learn/avancado/` com 11 módulos de ritmo livre: padrões de agentes, ferramentas e saídas estruturadas, RAG, memória, agentes de código, avaliação e red teaming, segurança, observabilidade e LLMOps, modelos abertos, multimodal e projeto integrador.
 - Glossário ampliado.
@@ -35,6 +35,12 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - Site com MkDocs Material publicado no GitHub Pages a cada mudança: [leozitogs.github.io/agentic-lab](https://leozitogs.github.io/agentic-lab/).
 - O conteúdo continua na raiz; `scripts/build_site.py` monta as páginas e aponta links de código para o GitHub.
 
+### 0.2.4 — Kit de RAG
+
+- `build/evaluations/rag-recuperacao/`: corpus público fixado (docs do MkDocs 1.6.1, baixado e conferido por hash), 50 perguntas rotuladas e três configurações de recuperação comparadas (BM25 com chunk fixo, BM25 com chunk por estrutura, busca densa no Chroma).
+- Relatório gerado por script com recall@k, MRR, intervalos de confiança e análise de erros; testes leves e avaliação completa sob demanda na CI.
+- ADR-0003 adotando BM25 com chunks por estrutura como recuperação padrão para RAG sobre documentação.
+
 ## Próximos marcos
 
 ### 0.3.0 — Biblioteca de prompts
@@ -47,9 +53,8 @@ Este arquivo descreve **para onde o repo vai**. O roteiro de estudos está em `l
 - 2 skills com `SKILL.md`, exemplos e testes.
 - Um MCP com tool de escrita protegida por confirmação humana (human-in-the-loop).
 
-### 0.5.0 — Kits de recuperação e avaliação
+### 0.5.0 — Kit de avaliação
 
-- Kit de RAG com conjunto de perguntas rotuladas e comparação de configurações (módulo 3).
 - Suíte de eval com casos adversariais rodando na CI (módulo 6).
 
 ### 0.6.0 — Kits de segurança e operação

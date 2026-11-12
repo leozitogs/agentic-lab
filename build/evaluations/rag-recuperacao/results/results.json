@@ -1,0 +1,1129 @@
+{
+  "kit_version": "0.1.0",
+  "run_date": "2026-11-12",
+  "generated_at": "2026-11-12T10:18:50-03:00",
+  "environment": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "chromadb": "1.5.9",
+      "onnxruntime": "1.31.1",
+      "tokenizers": "0.23.3",
+      "numpy": "2.5.4"
+    }
+  },
+  "corpus": {
+    "project": "mkdocs/mkdocs",
+    "tag": "1.6.1",
+    "license": "BSD-2-Clause",
+    "url": "https://github.com/mkdocs/mkdocs/archive/refs/tags/1.6.1.tar.gz",
+    "archive_sha256": "10b78edfc02bf37646d0c5b6fc7b2ee5f96b7e060207654ee187149c71b84644",
+    "docs_sha256": "0d6e44279879d18116c43c7cb64e5959a1a4f269784d0deeeed6e9e8d248d9cc",
+    "n_files": 19,
+    "n_chars": 284277
+  },
+  "params": {
+    "top_k": 10,
+    "fixed": {
+      "size": 800,
+      "overlap": 200
+    },
+    "structure": {
+      "max_chars": 800
+    },
+    "bm25": {
+      "k1": 1.2,
+      "b": 0.75
+    },
+    "embedder": "all-MiniLM-L6-v2 em ONNX, o embedder padrão do Chroma (ONNXMiniLM_L6_V2), 384 dimensões, entrada truncada em 256 tokens, distância cosseno"
+  },
+  "styles": {
+    "literal": 31,
+    "parafrase": 19
+  },
+  "categories": {
+    "cli": 6,
+    "comportamento": 6,
+    "conceito": 4,
+    "configuracao": 12,
+    "deploy": 7,
+    "plugins": 7,
+    "tema": 8
+  },
+  "configs": {
+    "A": {
+      "name": "BM25 + chunk fixo",
+      "description": "BM25 sobre janelas de 800 caracteres com 200 de sobreposição, por arquivo.",
+      "n_chunks": 478,
+      "avg_chunk_chars": 787,
+      "index_seconds": 0.03267809998942539,
+      "latency_ms": {
+        "mean": 0.16442800086224452,
+        "p95": 0.26557500095805153
+      },
+      "metrics": {
+        "recall@1": 0.58,
+        "recall@3": 0.72,
+        "recall@5": 0.78,
+        "recall@10": 0.82,
+        "mrr@10": 0.6673571428571428
+      },
+      "ci95": {
+        "recall@5": [
+          0.66,
+          0.88
+        ],
+        "mrr@10": [
+          0.552,
+          0.7765000000000001
+        ]
+      },
+      "by_style": {
+        "literal": 1.0,
+        "parafrase": 0.42105263157894735
+      },
+      "by_category": {
+        "cli": 1.0,
+        "comportamento": 0.8333333333333334,
+        "conceito": 0.75,
+        "configuracao": 0.6666666666666666,
+        "deploy": 0.7142857142857143,
+        "plugins": 0.8571428571428571,
+        "tema": 0.75
+      }
+    },
+    "B": {
+      "name": "BM25 + chunk por estrutura",
+      "description": "BM25 sobre seções por título Markdown, com o caminho de títulos no texto indexado.",
+      "n_chunks": 585,
+      "avg_chunk_chars": 482,
+      "index_seconds": 0.03348480000568088,
+      "latency_ms": {
+        "mean": 0.1519400006509386,
+        "p95": 0.2666549953573849
+      },
+      "metrics": {
+        "recall@1": 0.68,
+        "recall@3": 0.78,
+        "recall@5": 0.78,
+        "recall@10": 0.82,
+        "mrr@10": 0.7288888888888888
+      },
+      "ci95": {
+        "recall@5": [
+          0.66,
+          0.88
+        ],
+        "mrr@10": [
+          0.6122222222222222,
+          0.8366666666666667
+        ]
+      },
+      "by_style": {
+        "literal": 0.967741935483871,
+        "parafrase": 0.47368421052631576
+      },
+      "by_category": {
+        "cli": 0.6666666666666666,
+        "comportamento": 0.8333333333333334,
+        "conceito": 0.75,
+        "configuracao": 0.75,
+        "deploy": 0.7142857142857143,
+        "plugins": 1.0,
+        "tema": 0.75
+      }
+    },
+    "C": {
+      "name": "Densa (Chroma) + chunk por estrutura",
+      "description": "Embeddings all-MiniLM-L6-v2 dos mesmos chunks de B, busca por similaridade de cosseno no Chroma.",
+      "n_chunks": 585,
+      "avg_chunk_chars": 482,
+      "index_seconds": 11.057770600018557,
+      "latency_ms": {
+        "mean": 16.260347999923397,
+        "p95": 17.183794998709345
+      },
+      "metrics": {
+        "recall@1": 0.44,
+        "recall@3": 0.68,
+        "recall@5": 0.74,
+        "recall@10": 0.8,
+        "mrr@10": 0.5683571428571429
+      },
+      "ci95": {
+        "recall@5": [
+          0.62,
+          0.86
+        ],
+        "mrr@10": [
+          0.4485,
+          0.6775238095238094
+        ]
+      },
+      "by_style": {
+        "literal": 0.8709677419354839,
+        "parafrase": 0.5263157894736842
+      },
+      "by_category": {
+        "cli": 0.6666666666666666,
+        "comportamento": 0.8333333333333334,
+        "conceito": 0.75,
+        "configuracao": 0.5833333333333334,
+        "deploy": 0.8571428571428571,
+        "plugins": 0.8571428571428571,
+        "tema": 0.75
+      }
+    }
+  },
+  "comparisons": {
+    "B - A": {
+      "recall@5": [
+        0.0,
+        -0.08,
+        0.08
+      ],
+      "mrr@10": [
+        0.061531746031746035,
+        -0.017261904761904763,
+        0.1356984126984127
+      ]
+    },
+    "C - A": {
+      "recall@5": [
+        -0.04,
+        -0.18,
+        0.1
+      ],
+      "mrr@10": [
+        -0.099,
+        -0.23185714285714287,
+        0.023
+      ]
+    },
+    "C - B": {
+      "recall@5": [
+        -0.04,
+        -0.18,
+        0.08
+      ],
+      "mrr@10": [
+        -0.16053174603174603,
+        -0.2966984126984127,
+        -0.036833333333333336
+      ]
+    }
+  },
+  "per_question": [
+    {
+      "id": "q01",
+      "question": "Which command scaffolds a brand new MkDocs project?",
+      "doc": "getting-started.md",
+      "evidence": "mkdocs new my-project",
+      "style": "literal",
+      "category": "cli",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 4
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-0",
+        "B": "getting-started.md#sec-2",
+        "C": "user-guide/installation.md#sec-0"
+      }
+    },
+    {
+      "id": "q02",
+      "question": "How do I start the built-in dev-server to preview the documentation while I write?",
+      "doc": "getting-started.md",
+      "evidence": "start the server by running the `mkdocs serve`",
+      "style": "literal",
+      "category": "cli",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-1",
+        "B": "getting-started.md#sec-3",
+        "C": "getting-started.md#sec-3"
+      }
+    },
+    {
+      "id": "q03",
+      "question": "Which is the only required option in the configuration file?",
+      "doc": "getting-started.md",
+      "evidence": "option is the only required option in your configuration file",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": null
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-3",
+        "B": "getting-started.md#sec-5",
+        "C": "user-guide/configuration.md#sec-0"
+      }
+    },
+    {
+      "id": "q04",
+      "question": "When deploying a project site to GitHub Pages, which branch do the built files get committed to?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "tool to commit them to the `gh-pages` branch",
+      "style": "literal",
+      "category": "deploy",
+      "ranks": {
+        "A": 2,
+        "B": 1,
+        "C": 3
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-0",
+        "B": "user-guide/deploying-your-docs.md#sec-2",
+        "C": "user-guide/deploying-your-docs.md#sec-3"
+      }
+    },
+    {
+      "id": "q05",
+      "question": "My published site should answer on my own web address instead of github.io; what extra file must live in the source folder?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "you need to add a `CNAME` file",
+      "style": "parafrase",
+      "category": "deploy",
+      "ranks": {
+        "A": 2,
+        "B": 1,
+        "C": 5
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-76",
+        "B": "user-guide/deploying-your-docs.md#sec-7",
+        "C": "user-guide/deploying-your-docs.md#sec-1"
+      }
+    },
+    {
+      "id": "q06",
+      "question": "What gh-deploy invocation should I run from an organization or user pages repository?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "mkdocs gh-deploy --config-file ../my-project/mkdocs.yml --remote-branch master",
+      "style": "literal",
+      "category": "deploy",
+      "ranks": {
+        "A": 5,
+        "B": 1,
+        "C": 5
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-2",
+        "B": "user-guide/deploying-your-docs.md#sec-4",
+        "C": "user-guide/deploying-your-docs.md#sec-3"
+      }
+    },
+    {
+      "id": "q07",
+      "question": "Can I look at the generated output before the one-step GitHub publishing command sends it live?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "not be able to review the built site",
+      "style": "parafrase",
+      "category": "deploy",
+      "ranks": {
+        "A": 7,
+        "B": 6,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-4",
+        "B": "user-guide/configuration.md#sec-49",
+        "C": "user-guide/deploying-your-docs.md#sec-3"
+      }
+    },
+    {
+      "id": "q08",
+      "question": "My working copy has untracked or uncommitted changes; will they end up on the published site?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "these will be included in the pages that are deployed",
+      "style": "literal",
+      "category": "deploy",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-2",
+        "B": "user-guide/deploying-your-docs.md#sec-3",
+        "C": "user-guide/deploying-your-docs.md#sec-3"
+      }
+    },
+    {
+      "id": "q09",
+      "question": "Does Read the Docs support hosting MkDocs documentation?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "Read the Docs supports MkDocs out-of-the-box",
+      "style": "literal",
+      "category": "deploy",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 3
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-7",
+        "B": "user-guide/deploying-your-docs.md#sec-10",
+        "C": "user-guide/installation.md#sec-0"
+      }
+    },
+    {
+      "id": "q10",
+      "question": "Readers will open the pages straight from their disk with no web server; what must the canonical address option be set to?",
+      "doc": "user-guide/deploying-your-docs.md",
+      "evidence": "must be set to an empty string",
+      "style": "parafrase",
+      "category": "deploy",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-14",
+        "B": "about/release-notes.md#sec-5",
+        "C": "about/release-notes.md#sec-140"
+      }
+    },
+    {
+      "id": "q11",
+      "question": "How can I print the installed version of the tool to confirm the setup succeeded?",
+      "doc": "user-guide/installation.md",
+      "evidence": "to check that everything worked okay",
+      "style": "parafrase",
+      "category": "cli",
+      "ranks": {
+        "A": 1,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/installation.md#fixed-2",
+        "B": "user-guide/configuration.md#sec-70",
+        "C": "about/release-notes.md#sec-1"
+      }
+    },
+    {
+      "id": "q12",
+      "question": "On Windows the command is not recognized after installing; what is a quick workaround?",
+      "doc": "user-guide/installation.md",
+      "evidence": "preface every Python command with `python -m`",
+      "style": "parafrase",
+      "category": "cli",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 8
+      },
+      "top1": {
+        "A": "user-guide/installation.md#fixed-3",
+        "B": "user-guide/installation.md#sec-5",
+        "C": "user-guide/installation.md#sec-6"
+      }
+    },
+    {
+      "id": "q13",
+      "question": "How can I list every option available for the build command?",
+      "doc": "getting-started.md",
+      "evidence": "to get a list of all options available for the",
+      "style": "literal",
+      "category": "cli",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-8",
+        "B": "getting-started.md#sec-12",
+        "C": "getting-started.md#sec-12"
+      }
+    },
+    {
+      "id": "q14",
+      "question": "Which command initializes a new translation catalog for a built-in theme?",
+      "doc": "dev-guide/translations.md",
+      "evidence": "Use the `init_catalog` command on each theme's directory",
+      "style": "literal",
+      "category": "cli",
+      "ranks": {
+        "A": 5,
+        "B": null,
+        "C": 1
+      },
+      "top1": {
+        "A": "dev-guide/themes.md#fixed-61",
+        "B": "dev-guide/themes.md#sec-74",
+        "C": "dev-guide/translations.md#sec-8"
+      }
+    },
+    {
+      "id": "q15",
+      "question": "Which setting tells MkDocs where my Markdown sources live?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "The directory containing the documentation source markdown files",
+      "style": "parafrase",
+      "category": "configuracao",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": 6
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-23",
+        "B": "user-guide/writing-your-docs.md#sec-24",
+        "C": "about/release-notes.md#sec-152"
+      }
+    },
+    {
+      "id": "q16",
+      "question": "How do I set the canonical URL of the site?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Set the canonical URL of the site",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 2
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-1",
+        "B": "user-guide/configuration.md#sec-3",
+        "C": "user-guide/configuration.md#sec-5"
+      }
+    },
+    {
+      "id": "q17",
+      "question": "How can every page show a button that opens its source file on my Git host so readers can propose fixes?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "provides a link directly to the page in",
+      "style": "parafrase",
+      "category": "configuracao",
+      "ranks": {
+        "A": 2,
+        "B": 1,
+        "C": 7
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-0",
+        "B": "user-guide/configuration.md#sec-6",
+        "C": "user-guide/configuration.md#sec-10"
+      }
+    },
+    {
+      "id": "q18",
+      "question": "What edit_uri does MkDocs fill in automatically for a Bitbucket repository?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "automatically set as `src/default/docs/`",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 2
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-6",
+        "B": "user-guide/configuration.md#sec-9",
+        "C": "user-guide/configuration.md#sec-6"
+      }
+    },
+    {
+      "id": "q19",
+      "question": "Which option sets the remote branch that gh-deploy commits to?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Set the remote branch to commit to when using",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-11",
+        "B": "user-guide/configuration.md#sec-17",
+        "C": "user-guide/configuration.md#sec-17"
+      }
+    },
+    {
+      "id": "q20",
+      "question": "How do I keep some files that sit in my sources folder out of the generated website entirely?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "to not be picked up into the built site",
+      "style": "parafrase",
+      "category": "configuracao",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/deploying-your-docs.md#fixed-8",
+        "B": "user-guide/deploying-your-docs.md#sec-11",
+        "C": "user-guide/configuration.md#sec-40"
+      }
+    },
+    {
+      "id": "q21",
+      "question": "How can I mark pages as drafts so they appear while serving but not in the final build?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Draft files are available during `mkdocs serve`",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 3
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-18",
+        "B": "user-guide/configuration.md#sec-25",
+        "C": "about/release-notes.md#sec-48"
+      }
+    },
+    {
+      "id": "q22",
+      "question": "How do I make the preview server also rebuild when folders outside the sources change?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Determines additional directories to watch when running `mkdocs serve`",
+      "style": "parafrase",
+      "category": "configuracao",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-2",
+        "B": "getting-started.md#sec-4",
+        "C": "about/release-notes.md#sec-195"
+      }
+    },
+    {
+      "id": "q23",
+      "question": "Which option sets the address used by mkdocs serve?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Determines the address used when running `mkdocs serve`",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-41",
+        "B": "user-guide/configuration.md#sec-52",
+        "C": "user-guide/configuration.md#sec-52"
+      }
+    },
+    {
+      "id": "q24",
+      "question": "How can a configuration option take its value from an environment variable?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "may be set to the value of an environment variable using the",
+      "style": "literal",
+      "category": "configuracao",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-59",
+        "B": "user-guide/configuration.md#sec-74",
+        "C": "user-guide/configuration.md#sec-74"
+      }
+    },
+    {
+      "id": "q25",
+      "question": "Several of our sites share most settings; how can one config file reuse another one as a base?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "set the `INHERIT` (all caps) key",
+      "style": "parafrase",
+      "category": "configuracao",
+      "ranks": {
+        "A": 8,
+        "B": 3,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-63",
+        "B": "user-guide/configuration.md#sec-1",
+        "C": "user-guide/configuration.md#sec-79"
+      }
+    },
+    {
+      "id": "q26",
+      "question": "How do I make the build fail instead of just printing a warning?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "Set to `true` to halt processing when a",
+      "style": "parafrase",
+      "category": "comportamento",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": 3
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-34",
+        "B": "about/release-notes.md#sec-43",
+        "C": "dev-guide/plugins.md#sec-43"
+      }
+    },
+    {
+      "id": "q27",
+      "question": "When inheriting configuration, can I append items to a list defined in the parent file?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "you cannot append items to a list",
+      "style": "literal",
+      "category": "comportamento",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-68",
+        "B": "user-guide/configuration.md#sec-83",
+        "C": "user-guide/configuration.md#sec-83"
+      }
+    },
+    {
+      "id": "q28",
+      "question": "What happens when the YAML meta-data block at the top of a page is invalid?",
+      "doc": "user-guide/writing-your-docs.md",
+      "evidence": "then MkDocs does not recognize the section as meta-data",
+      "style": "literal",
+      "category": "comportamento",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-25",
+        "B": "user-guide/writing-your-docs.md#sec-26",
+        "C": "user-guide/writing-your-docs.md#sec-26"
+      }
+    },
+    {
+      "id": "q29",
+      "question": "Is the hook module reloaded on each build when running mkdocs serve?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "the hook module will *not* be reloaded on each build",
+      "style": "literal",
+      "category": "comportamento",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-48",
+        "B": "user-guide/configuration.md#sec-59",
+        "C": "about/release-notes.md#sec-75"
+      }
+    },
+    {
+      "id": "q30",
+      "question": "Which serve flag opens the site in a browser after the first build?",
+      "doc": "about/release-notes.md",
+      "evidence": "New flag `serve --open` to open the site in a browser",
+      "style": "literal",
+      "category": "comportamento",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-2",
+        "B": "about/release-notes.md#sec-5",
+        "C": "about/release-notes.md#sec-5"
+      }
+    },
+    {
+      "id": "q31",
+      "question": "Does the dev-server rebuild when the configuration file, documentation directory or theme directory changes?",
+      "doc": "getting-started.md",
+      "evidence": "whenever anything in the configuration file, documentation directory, or theme",
+      "style": "literal",
+      "category": "comportamento",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 2
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-2",
+        "B": "getting-started.md#sec-4",
+        "C": "about/release-notes.md#sec-151"
+      }
+    },
+    {
+      "id": "q32",
+      "question": "How can I run a small local Python script with event handlers without packaging a full extension?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "A list of paths to Python scripts (relative to `mkdocs.yml`)",
+      "style": "parafrase",
+      "category": "plugins",
+      "ranks": {
+        "A": null,
+        "B": 3,
+        "C": 2
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-60",
+        "B": "about/release-notes.md#sec-71",
+        "C": "about/release-notes.md#sec-71"
+      }
+    },
+    {
+      "id": "q33",
+      "question": "If I define the plugins setting in mkdocs.yml, is the search plugin still enabled?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "any defaults (such as `search`) are ignored",
+      "style": "literal",
+      "category": "plugins",
+      "ranks": {
+        "A": 1,
+        "B": 2,
+        "C": 2
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-50",
+        "B": "about/release-notes.md#sec-12",
+        "C": "about/release-notes.md#sec-168"
+      }
+    },
+    {
+      "id": "q34",
+      "question": "How can a plugin be enabled conditionally with the enabled option?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "each plugin has the `enabled` boolean option",
+      "style": "literal",
+      "category": "plugins",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-51",
+        "B": "user-guide/configuration.md#sec-63",
+        "C": "user-guide/configuration.md#sec-63"
+      }
+    },
+    {
+      "id": "q35",
+      "question": "Very short queries of one or two characters return nothing in the site search box; what can I change?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "searches shorter than 3 chars in length are ignored",
+      "style": "parafrase",
+      "category": "plugins",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-53",
+        "B": "user-guide/configuration.md#sec-67",
+        "C": "user-guide/configuration.md#sec-67"
+      }
+    },
+    {
+      "id": "q36",
+      "question": "What does the prebuild_index option of the search plugin require?",
+      "doc": "user-guide/configuration.md",
+      "evidence": "This option requires that [Node.js] be installed",
+      "style": "literal",
+      "category": "plugins",
+      "ranks": {
+        "A": 5,
+        "B": 1,
+        "C": null
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-107",
+        "B": "user-guide/configuration.md#sec-70",
+        "C": "user-guide/configuration.md#sec-71"
+      }
+    },
+    {
+      "id": "q37",
+      "question": "My extension should abort the build with a friendly message rather than a traceback; what should it raise?",
+      "doc": "dev-guide/plugins.md",
+      "evidence": "`PluginError`, passing in your own custom-crafted message",
+      "style": "parafrase",
+      "category": "plugins",
+      "ranks": {
+        "A": 2,
+        "B": 2,
+        "C": 1
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-95",
+        "B": "about/release-notes.md#sec-112",
+        "C": "dev-guide/plugins.md#sec-43"
+      }
+    },
+    {
+      "id": "q38",
+      "question": "With event priorities, which plugin events are called first?",
+      "doc": "dev-guide/plugins.md",
+      "evidence": "Events with higher priority are called first",
+      "style": "literal",
+      "category": "plugins",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-63",
+        "B": "dev-guide/plugins.md#sec-40",
+        "C": "about/release-notes.md#sec-74"
+      }
+    },
+    {
+      "id": "q39",
+      "question": "Which color modes can be set for the default mkdocs theme?",
+      "doc": "user-guide/choosing-your-theme.md",
+      "evidence": "Set the default color mode for the theme to one of",
+      "style": "literal",
+      "category": "tema",
+      "ranks": {
+        "A": 2,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/choosing-your-theme.md#fixed-2",
+        "B": "user-guide/choosing-your-theme.md#sec-2",
+        "C": "user-guide/choosing-your-theme.md#sec-2"
+      }
+    },
+    {
+      "id": "q40",
+      "question": "How can visitors switch between light and dark appearance themselves and keep that choice?",
+      "doc": "user-guide/choosing-your-theme.md",
+      "evidence": "Enable a toggle menu in the navigation bar",
+      "style": "parafrase",
+      "category": "tema",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/choosing-your-theme.md#fixed-1",
+        "B": "user-guide/choosing-your-theme.md#sec-2",
+        "C": "user-guide/choosing-your-theme.md#sec-2"
+      }
+    },
+    {
+      "id": "q41",
+      "question": "I only want to tweak a few visual details of an existing look with my own stylesheet; where do I put the file?",
+      "doc": "user-guide/customizing-your-theme.md",
+      "evidence": "and place it next to the documentation Markdown",
+      "style": "parafrase",
+      "category": "tema",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/configuration.md#fixed-30",
+        "B": "user-guide/configuration.md#sec-37",
+        "C": "user-guide/customizing-your-theme.md#sec-3"
+      }
+    },
+    {
+      "id": "q42",
+      "question": "How can I add my own script library in a template without dropping the ones the parent template already loads?",
+      "doc": "user-guide/customizing-your-theme.md",
+      "evidence": "a [super block] can be used with a call to `super`",
+      "style": "parafrase",
+      "category": "tema",
+      "ranks": {
+        "A": 2,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/customizing-your-theme.md#fixed-8",
+        "B": "user-guide/customizing-your-theme.md#sec-12",
+        "C": "user-guide/customizing-your-theme.md#sec-12"
+      }
+    },
+    {
+      "id": "q43",
+      "question": "What is the bare minimum required for a custom theme?",
+      "doc": "dev-guide/themes.md",
+      "evidence": "The bare minimum required for a custom theme is a `main.html`",
+      "style": "literal",
+      "category": "tema",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": null
+      },
+      "top1": {
+        "A": "dev-guide/themes.md#fixed-1",
+        "B": "dev-guide/themes.md#sec-2",
+        "C": "dev-guide/themes.md#sec-62"
+      }
+    },
+    {
+      "id": "q44",
+      "question": "Inside a template, how do I check whether the user switched off the site's search feature?",
+      "doc": "dev-guide/themes.md",
+      "evidence": "{% if 'search' in config.plugins %}",
+      "style": "parafrase",
+      "category": "tema",
+      "ranks": {
+        "A": null,
+        "B": 9,
+        "C": 2
+      },
+      "top1": {
+        "A": "getting-started.md#fixed-7",
+        "B": "dev-guide/themes.md#sec-56",
+        "C": "dev-guide/themes.md#sec-52"
+      }
+    },
+    {
+      "id": "q45",
+      "question": "How do I build the mkdocs theme in French?",
+      "doc": "user-guide/localizing-your-theme.md",
+      "evidence": "to build the `mkdocs` theme in French",
+      "style": "literal",
+      "category": "tema",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/localizing-your-theme.md#fixed-2",
+        "B": "user-guide/localizing-your-theme.md#sec-3",
+        "C": "user-guide/localizing-your-theme.md#sec-3"
+      }
+    },
+    {
+      "id": "q46",
+      "question": "Which Google Analytics version and option does the mkdocs theme support?",
+      "doc": "user-guide/choosing-your-theme.md",
+      "evidence": "Currently, only Google Analytics v4 is supported via the `gtag` option",
+      "style": "literal",
+      "category": "tema",
+      "ranks": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "top1": {
+        "A": "about/release-notes.md#fixed-98",
+        "B": "about/release-notes.md#sec-115",
+        "C": "about/release-notes.md#sec-120"
+      }
+    },
+    {
+      "id": "q47",
+      "question": "Can I name my index pages README.md instead of index.md?",
+      "doc": "user-guide/writing-your-docs.md",
+      "evidence": "MkDocs will allow you to name your index pages as",
+      "style": "literal",
+      "category": "conceito",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-4",
+        "B": "user-guide/writing-your-docs.md#sec-6",
+        "C": "user-guide/writing-your-docs.md#sec-6"
+      }
+    },
+    {
+      "id": "q48",
+      "question": "How does MkDocs attempt to determine the title of a document?",
+      "doc": "user-guide/writing-your-docs.md",
+      "evidence": "MkDocs will attempt to determine the title of a document",
+      "style": "literal",
+      "category": "conceito",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 2
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-22",
+        "B": "user-guide/writing-your-docs.md#sec-23",
+        "C": "user-guide/writing-your-docs.md#sec-24"
+      }
+    },
+    {
+      "id": "q49",
+      "question": "Can a navigation section have a page assigned to it?",
+      "doc": "user-guide/writing-your-docs.md",
+      "evidence": "Note that a section cannot have a page assigned to it",
+      "style": "literal",
+      "category": "conceito",
+      "ranks": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-9",
+        "B": "user-guide/writing-your-docs.md#sec-10",
+        "C": "user-guide/writing-your-docs.md#sec-10"
+      }
+    },
+    {
+      "id": "q50",
+      "question": "What happens to a Markdown file that I leave out of the menu listing?",
+      "doc": "user-guide/writing-your-docs.md",
+      "evidence": "pages will be \"hidden\" unless linked to directly",
+      "style": "parafrase",
+      "category": "conceito",
+      "ranks": {
+        "A": null,
+        "B": null,
+        "C": null
+      },
+      "top1": {
+        "A": "user-guide/writing-your-docs.md#fixed-5",
+        "B": "user-guide/writing-your-docs.md#sec-7",
+        "C": "user-guide/writing-your-docs.md#sec-0"
+      }
+    }
+  ],
+  "limitations": [
+    "50 perguntas escritas por uma pessoa a partir do próprio corpus: há viés de quem já conhece o texto, e os intervalos de confiança são largos. Diferenças pequenas entre configurações não são conclusivas.",
+    "Acerto é casamento literal da evidência no chunk. Um chunk que responde a pergunta com outras palavras (por exemplo, a mesma opção explicada em outro arquivo) conta como erro.",
+    "Mede só a recuperação. Não há geração de resposta nem avaliação de fidelidade (faithfulness).",
+    "A configuração B muda duas coisas em relação a A: as fronteiras do chunk e o caminho de títulos no texto indexado. O experimento não separa o efeito de cada uma.",
+    "BM25 sem stemming e com tokenizador simples; um analisador com stemming (como o do Lucene) tende a melhorar A e B nas paráfrases morfológicas.",
+    "all-MiniLM-L6-v2 trunca a entrada em 256 word pieces: o fim de um chunk mais longo que isso não entra no vetor. Com o teto de 800 caracteres, cerca de 8% dos chunks por estrutura passam do limite (Markdown com código e URLs gera muitos tokens por caractere).",
+    "Latências medidas numa máquina só, em processo, sem rede (mediana de 3 execuções por consulta); a inferência ONNX em CPU oscilou bastante entre execuções nesta máquina. Servem para comparar ordens de grandeza, não como número de produção."
+  ],
+  "model_load_seconds": 0.39587659999961033,
+  "total_seconds": 19.34178659999452
+}

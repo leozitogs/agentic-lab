@@ -1,7 +1,7 @@
 ---
 tipo: guide
 maturidade: draft
-versao: 0.2.0
+versao: 0.2.1
 autores: [leozitogs]
 criado_em: 2026-11-12
 atualizado_em: 2026-11-12
@@ -47,6 +47,12 @@ Escolha pelo menos duas e compare no mesmo exercício. O objetivo é entender o 
 ## Exercício
 
 Monte um RAG sobre a documentação pública de um projeto open source e compare três configurações de recuperação com 50 perguntas rotuladas.
+
+## Kit pronto
+
+O exercício já tem uma versão de referência em [`build/evaluations/rag-recuperacao/`](../../build/evaluations/rag-recuperacao/README.md): a documentação do MkDocs 1.6.1 como corpus, 50 perguntas rotuladas (literais e paráfrases), três configurações comparadas (BM25 com chunk fixo, BM25 com chunk por estrutura e busca densa no Chroma) e um [relatório](../../build/evaluations/rag-recuperacao/results/report.md) com recall@k, MRR, intervalos de confiança e análise de erros, gerado por um script. A escolha resultante está na [ADR-0003](../../ops/decisions/ADR-0003-recuperacao-padrao-rag.md).
+
+Use o kit como molde: troque o corpus e as perguntas pelos do seu projeto e rode de novo antes de confiar na mesma decisão.
 
 ## Critério de aceite
 

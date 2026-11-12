@@ -106,6 +106,8 @@ nav:
           - repo-knowledge: build/mcp-servers/repo-knowledge/README.md
       - Avaliações:
           - Eval como código · research-analyst: build/evaluations/research-analyst/README.md
+          - Kit de RAG · recuperação: build/evaluations/rag-recuperacao/README.md
+          - Kit de RAG · relatório: build/evaluations/rag-recuperacao/results/report.md
           - Eval manual · research-analyst v0.1.0: build/evaluations/eval-research-analyst-v0.1.0.md
       - Templates:
           - Prompt: build/prompts/PROMPT-TEMPLATE.md
@@ -124,6 +126,7 @@ nav:
       - Decisões:
           - ADR-0001 · Estrutura do repositório: ops/decisions/ADR-0001-estrutura-do-repo.md
           - ADR-0002 · Trilha avançada: ops/decisions/ADR-0002-trilha-avancada.md
+          - ADR-0003 · Recuperação padrão para RAG: ops/decisions/ADR-0003-recuperacao-padrao-rag.md
       - Segurança:
           - ops/security/README.md
           - Checklist: ops/security/checklist.md

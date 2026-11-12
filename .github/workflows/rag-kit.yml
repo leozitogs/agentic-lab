@@ -1,0 +1,72 @@
+name: RAG kit
+
+# Kit de RAG do módulo 03 (build/evaluations/rag-recuperacao/).
+# 1. testes: chunkers, BM25, métricas, corpus sintético e formato das perguntas.
+#    Só biblioteca padrão, sem rede e sem modelo. Roda em push e PR que tocam o kit.
+# 2. avaliacao-completa: sob demanda (workflow_dispatch). Instala o Chroma, baixa
+#    o corpus (MkDocs 1.6.1) e o modelo ONNX, roda as três configurações e publica
+#    results/ como artefato.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'build/evaluations/rag-recuperacao/**'
+      - '.github/workflows/rag-kit.yml'
+  pull_request:
+    paths:
+      - 'build/evaluations/rag-recuperacao/**'
+      - '.github/workflows/rag-kit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: build/evaluations/rag-recuperacao
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testes leves (sem Chroma, sem rede)
+        run: python -m unittest discover -s tests -v
+      - name: Formato das perguntas
+        run: python validate_questions.py
+
+  avaliacao-completa:
+    if: github.event_name == 'workflow_dispatch'
+    needs: testes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: build/evaluations/rag-recuperacao/requirements.txt
+      - name: Cache do corpus e do modelo ONNX
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache/rag-recuperacao
+            ~/.cache/chroma/onnx_models
+          key: rag-kit-mkdocs-1.6.1-minilm-${{ hashFiles('build/evaluations/rag-recuperacao/requirements.txt') }}
+      - name: Instalar dependências fixadas
+        run: python -m pip install -r requirements.txt
+      - name: Testes com Chroma
+        run: python -m unittest discover -s tests -v
+      - name: Validar perguntas contra o corpus
+        run: python validate_questions.py --corpus
+      - name: Avaliação completa (A, B e C)
+        run: python run_eval.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rag-kit-results
+          path: build/evaluations/rag-recuperacao/results/

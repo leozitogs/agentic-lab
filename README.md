@@ -100,7 +100,7 @@ Se você acabou de chegar, leia nesta ordem:
 
 ## Status
 
-Versão atual: `0.2.3`: [site no GitHub Pages](https://leozitogs.github.io/agentic-lab/), trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI, o primeiro [eval como código](build/evaluations/research-analyst/README.md) e o primeiro [servidor MCP](build/mcp-servers/repo-knowledge/README.md).
+Versão atual: `0.2.4`: [site no GitHub Pages](https://leozitogs.github.io/agentic-lab/), trilha avançada em módulos ([ADR-0002](ops/decisions/ADR-0002-trilha-avancada.md)), validador de front-matter na CI, o primeiro [eval como código](build/evaluations/research-analyst/README.md), o primeiro [servidor MCP](build/mcp-servers/repo-knowledge/README.md) e o [kit de RAG](build/evaluations/rag-recuperacao/README.md) do módulo 03 ([ADR-0003](ops/decisions/ADR-0003-recuperacao-padrao-rag.md)).
 Próximo marco: ver `ROADMAP.md`.
 
 ## Licença

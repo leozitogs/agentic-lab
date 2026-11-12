@@ -1,0 +1,3 @@
+# Dependência direta do kit (só a configuração C precisa dela).
+# requirements.txt é gerado a partir deste arquivo; ver README.
+chromadb==1.5.9
