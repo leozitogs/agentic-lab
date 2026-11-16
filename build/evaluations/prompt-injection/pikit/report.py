@@ -159,6 +159,8 @@ def render(results: dict, notes: dict) -> str:
     add("---")
     add("")
     add("# Relatório · injeção indireta contra um agente de e-mail, antes e depois das mitigações")
+    if "experiment_id" in results:
+        add(f"\nExperimento `{results['experiment_id']}` · publicação `{results['publication_id']}`.")
     add("")
     add("> Arquivo gerado por `run_eval.py`. Não edite à mão: rode de novo. "
         "Os comentários dos exemplos vêm de `notes.json`.")

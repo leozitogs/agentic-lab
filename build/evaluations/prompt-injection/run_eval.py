@@ -7,9 +7,9 @@ Uso:
     python run_eval.py --provider openai-compat --model <modelo> --base-url <url>
     python run_eval.py --report-only                    # só regera report.md a partir de results.json
 
-Cada execução é gravada assim que termina em .cache/prompt-injection/ (na raiz
-do repositório, ignorada pelo git); rodar de novo com os mesmos parâmetros
-retoma de onde parou. No fim grava results/results.json e results/report.md.
+Cada execução é gravada integralmente em .cache/prompt-injection/experiments/.
+Com --model-revision imutável e a mesma identidade, retoma os casos concluídos.
+No fim publica manifesto, diário completo, resumo e relatório em results/.
 """
 from __future__ import annotations
 
@@ -25,13 +25,13 @@ KIT = pathlib.Path(__file__).resolve().parent
 ROOT = KIT.parent.parent.parent
 sys.path.insert(0, str(KIT))
 
-from pikit import report  # noqa: E402
+from pikit import experiment, report  # noqa: E402
 from pikit.agent import CONFIGS, MAX_TURNS, run_case  # noqa: E402
 from pikit.criteria import evaluate  # noqa: E402
 from pikit.environment import build_inbox, load_all  # noqa: E402
 from pikit.providers import OllamaProvider, OpenAICompatProvider  # noqa: E402
 
-KIT_VERSION = "0.1.0"
+KIT_VERSION = "0.2.0"
 DEFAULT_MODEL = "ahc-qwen3:4b-instruct-8k"
 RESULTS = KIT / "results"
 CACHE = ROOT / ".cache" / "prompt-injection"
@@ -92,11 +92,11 @@ def compact(result, ev: dict) -> dict:
         "seconds": round(result.seconds, 3), "model_calls": result.model_calls,
         "prompt_tokens": result.prompt_tokens, "output_tokens": result.output_tokens,
         "error": result.error, "hit_turn_limit": result.hit_turn_limit,
-        "tools": result.log.to_list(), "final_answer": result.final_answer[:1500],
+        "tools": result.log.to_list(), "final_answer": result.final_answer,
         "filter_removed": result.filter_removed,
     }
     if result.raw_answer != result.final_answer:
-        out["raw_answer"] = result.raw_answer[:1500]
+        out["raw_answer"] = result.raw_answer
     if result.plan is not None:
         out["plan"] = result.plan
     return out
@@ -125,21 +125,6 @@ def slim(run: dict) -> dict:
         tools.append(ev)
     out["tools"] = tools
     return out
-
-
-def cache_path(args) -> pathlib.Path:
-    safe = "".join(ch if ch.isalnum() or ch in "-_." else "_" for ch in f"{args.provider}-{args.model}")
-    return CACHE / f"runs-{safe}-t{args.temperature}.jsonl"
-
-
-def load_cache(path: pathlib.Path) -> dict[tuple, dict]:
-    done = {}
-    if path.exists():
-        for line in path.read_text(encoding="utf-8").splitlines():
-            if line.strip():
-                r = json.loads(line)
-                done[(r["config"], r["task"], r["attack"], r["rep"])] = r
-    return done
 
 
 def environment(args) -> dict:
@@ -173,49 +158,68 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--base-url", default="https://api.openai.com/v1")
     ap.add_argument("--api-key-env", default="OPENAI_API_KEY")
     ap.add_argument("--temperature", type=float, default=0.3)
-    ap.add_argument("--fresh", action="store_true", help="ignora execuções já gravadas no cache")
+    ap.add_argument("--model-revision", default="",
+                    help="Snapshot ou digest imutável declarado pelo operador")
+    ap.add_argument("--fresh", action="store_true", help="cria execução isolada preservando o histórico")
     ap.add_argument("--report-only", action="store_true")
     args = ap.parse_args(argv)
 
     notes = json.loads((KIT / "notes.json").read_text(encoding="utf-8")) if (KIT / "notes.json").exists() else {}
     if args.report_only:
-        results = json.loads((RESULTS / "results.json").read_text(encoding="utf-8"))
-        (RESULTS / "report.md").write_text(report.render(results, notes), encoding="utf-8")
+        experiment.regenerate(RESULTS, report.render, notes)
         print("results/report.md regerado.")
         return 0
 
+    if args.reps < 1:
+        ap.error("--reps deve ser positivo")
     inbox, tasks, attacks = load_all()
-    configs = [c.strip() for c in args.configs.split(",") if c.strip()]
+    manifest = experiment.manifest(args, KIT, inbox, tasks, attacks, CONFIGS, MAX_TURNS, KIT_VERSION)
+    configs = list(dict.fromkeys(c.strip() for c in args.configs.split(",") if c.strip()))
+    if not configs:
+        ap.error("informe pelo menos uma configuração")
     unknown = [c for c in configs if c not in CONFIGS]
     if unknown:
         ap.error(f"configuração desconhecida: {unknown}; use {list(CONFIGS)}")
     if args.tasks:
-        tasks = [t for t in tasks if t["id"] in args.tasks.split(",")]
+        selected = set(args.tasks.split(","))
+        if selected - {t["id"] for t in tasks}:
+            ap.error("tarefa desconhecida")
+        tasks = [t for t in tasks if t["id"] in selected]
     if args.attacks:
-        attacks = [a for a in attacks if a["id"] in args.attacks.split(",")]
+        selected = set(args.attacks.split(","))
+        if selected - {a["id"] for a in attacks}:
+            ap.error("ataque desconhecido")
+        attacks = [a for a in attacks if a["id"] in selected]
 
-    CACHE.mkdir(parents=True, exist_ok=True)
-    cpath = cache_path(args)
-    done = {} if args.fresh else load_cache(cpath)
-    if args.fresh and cpath.exists():
-        cpath.unlink()
+    directory = CACHE / "experiments" / manifest["experiment_id"]
+    directory.mkdir(parents=True, exist_ok=True)
+    if not args.model_revision:
+        print("Sem revisão imutável: esta invocação tem identidade isolada.")
+    with experiment.exclusive_lock(directory / ".run.lock"):
+        experiment.atomic_write(directory / "manifest.json", experiment.canonical(manifest) + b"\n")
+        return execute(args, notes, manifest, directory, inbox, tasks, attacks, configs)
+
+
+def execute(args, notes, manifest, directory, inbox, tasks, attacks, configs):
+    cpath = directory / "runs.jsonl"
+    done = experiment.load_journal(cpath, manifest)
     plan = [(rep, cfg, t, a) for rep in range(args.reps) for cfg in configs
             for t in tasks for a in [None] + attacks]
     t_start = time.perf_counter()
     runs = []
-    with cpath.open("a", encoding="utf-8") as fh:
+    with cpath.open("ab") as fh:
         for i, (rep, cfg, task, attack) in enumerate(plan, 1):
             key = (cfg, task["id"], attack["id"] if attack else None, rep)
-            if key in done:
+            if key in done and not done[key]["error"] and not done[key]["hit_turn_limit"]:
                 runs.append(done[key])
                 continue
             provider = make_provider(args, seed=rep)
             case_inbox = build_inbox(inbox, task, attack)
             result = run_case(provider, case_inbox, task, CONFIGS[cfg][1])
             ev = evaluate(result, task, attack, case_inbox)
-            row = {"config": cfg, "task": task["id"], "attack": key[2], "rep": rep, **compact(result, ev)}
-            fh.write(json.dumps(row, ensure_ascii=False) + "\n")
-            fh.flush()
+            row = {"experiment_id": manifest["experiment_id"], "config": cfg,
+                   "task": task["id"], "attack": key[2], "rep": rep, **compact(result, ev)}
+            experiment.append_record(fh, row)
             runs.append(row)
             flag = "" if attack is None else (" ATAQUE OK" if ev["attack_success"] else
                                               (" tentou" if ev["attack_attempted"] else ""))
@@ -247,8 +251,7 @@ def main(argv: list[str] | None = None) -> int:
         "runs": [slim(r) for r in runs],
     }
     RESULTS.mkdir(exist_ok=True)
-    (RESULTS / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
-    (RESULTS / "report.md").write_text(report.render(results, notes), encoding="utf-8")
+    experiment.publish(RESULTS, results, manifest, cpath.read_bytes(), report.render, notes)
     print()
     print(f"{'configuração':<22} {'ASR':>5} {'tent.':>6} {'util.atq':>8} {'util.ben':>8} {'s/caso':>7}")
     for c in configs:
@@ -260,4 +263,8 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except (ValueError, RuntimeError, OSError) as exc:
+        print(f"Erro: {exc}", file=sys.stderr)
+        sys.exit(1)

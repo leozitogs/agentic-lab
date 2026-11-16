@@ -1,10 +1,11 @@
 ---
+
 tipo: eval
 maturidade: tested
-versao: 0.1.0
+versao: 0.2.0
 autores: [leozitogs]
 criado_em: 2026-11-12
-atualizado_em: 2026-11-12
+atualizado_em: 2026-11-15
 artefato_avaliado: learn/avancado/07-seguranca-de-agentes.md
 modelos_testados: [ahc-qwen3:4b-instruct-8k]
 tags: [seguranca, prompt-injection, asr, agentes, owasp, eval-as-code]
@@ -14,6 +15,29 @@ riscos: [prompt-injection, exfiltracao, excesso-de-agencia]
 # Kit de prompt injection · agente de e-mail sob injeção indireta
 
 O exercício do [módulo 07](../../../learn/avancado/07-seguranca-de-agentes.md), pronto para rodar: um agente de e-mail com ferramentas simuladas sobre uma caixa de entrada fictícia, e-mails com injeção indireta, e quatro mitigações da literatura medidas isoladas e combinadas. Mede, como o [AgentDojo](https://github.com/ethz-spylab/agentdojo), duas coisas: **ASR** (attack success rate, o ataque conseguiu o que queria?) e **utilidade** (a tarefa legítima foi cumprida?). A decisão que saiu daqui está na [ADR-0004](../../../ops/decisions/ADR-0004-mitigacoes-prompt-injection.md).
+
+## Identidade experimental e auditoria
+
+A infraestrutura de execução v0.2.0 preserva respostas e logs completos e identifica cada experimento por SHA-256 dos dados, código, configurações e parâmetros. O [plano técnico](engineering-plan.md) descreve as etapas seguintes. Autoria desta contribuição de Leonardo Gonçalves Sobral (`leozitogs`).
+
+```bash
+# Informe um digest ou snapshot imutável do modelo para permitir retomada.
+python run_eval.py --model ahc-qwen3:4b-instruct-8k --model-revision DIGEST_DO_MODELO
+# Os casos concluídos da mesma identidade são reaproveitados.
+python run_eval.py --model ahc-qwen3:4b-instruct-8k --model-revision DIGEST_DO_MODELO
+# Uma rodada independente preserva as execuções anteriores.
+python run_eval.py --model-revision DIGEST_DO_MODELO --fresh
+```
+
+`--model-revision` registra a declaração do operador. Consulte o digest do artefato local ou o snapshot disponibilizado pelo provedor. Sem esse argumento, cada invocação recebe identidade isolada. A identidade registrada permite auditar a execução, e a variabilidade do provedor continua possível.
+
+O diário completo e seu manifesto ficam em `.cache/prompt-injection/experiments/<identidade>/`. Cada publicação preserva o diário completo da identidade, manifesto, resumo e relatório em `results/experiments/<identidade>/<publicação>/`. O `results.json` principal referencia esses arquivos. O relatório exibe os identificadores para detectar divergências após interrupção durante a publicação. Os resultados históricos de 2026-11-12 continuam disponíveis e podem ser regenerados com `--report-only`.
+
+Retomadas repetem casos com erro ou limite de chamadas e usam a última tentativa de cada caso. Uma cauda JSONL interrompida é preservada em `interrupted-*.bin` antes da recuperação. Corrupção anterior encerra a execução com erro. As travas `.run.lock` e `.publish.lock` impedem escritores simultâneos. Se uma interrupção abrupta deixar uma trava, confirme que o processo terminou antes de removê-la manualmente. Publicação concorrente ocupada encerra com mensagem e pode ser repetida usando a mesma identidade.
+
+Endpoints devem usar HTTP(S) sem credenciais, query ou fragmento. A chave da API continua sendo lida pelo provedor via variável de ambiente. Os artefatos completos incluem conteúdo do experimento e devem usar os dados públicos ou sintéticos previstos pelo laboratório.
+
+Execute `python -m unittest discover -s tests -v` nesta pasta para verificar a infraestrutura offline. A rodada histórica permanece a evidência científica disponível até a execução das etapas seguintes.
 
 ## Resultado da rodada de 2026-11-12
 
@@ -111,7 +135,7 @@ python run_eval.py --model qwen3:4b-instruct  # outro modelo do Ollama
 python run_eval.py --report-only              # regera report.md a partir de results.json
 ```
 
-Cada execução é gravada em `.cache/prompt-injection/` na raiz do repositório (ignorada pelo git) assim que termina; se a rodada cair, rodar de novo com os mesmos parâmetros retoma de onde parou (`--fresh` recomeça).
+Cada execução é gravada integralmente em `.cache/prompt-injection/experiments/` assim que termina. Com `--model-revision` imutável e identidade equivalente, uma nova invocação retoma os casos concluídos. `--fresh` cria outra identidade e preserva o histórico.
 
 **Outro modelo ou API.** O provedor é plugável (`pikit/providers.py`): qualquer classe com `chat(messages, tools, json_mode) -> ModelTurn` serve. Há um `OllamaProvider` e um `OpenAICompatProvider` para APIs no formato `/v1/chat/completions`, com a chave lida de uma variável de ambiente (`--api-key-env`, padrão `OPENAI_API_KEY`). Este segundo não foi exercitado na rodada registrada; os testes cobrem só a conversão de formato.
 
