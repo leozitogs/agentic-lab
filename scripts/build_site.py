@@ -14,7 +14,8 @@ import shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "_site_src"
-SOURCES = ("README.md", "ROADMAP.md", "learn", "build", "cases", "ops")
+SOURCES = ("README.md", "ROADMAP.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
+           "SECURITY.md", "learn", "build", "cases", "ops")
 REPO_BLOB = "https://github.com/leozitogs/agentic-lab/blob/main/"
 REPO_TREE = "https://github.com/leozitogs/agentic-lab/tree/main/"
 LINK = re.compile(r"(?<!!)\]\(([^)\s#]+)(#[^)]*)?\)")

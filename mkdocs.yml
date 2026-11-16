@@ -1,5 +1,5 @@
 site_name: agentic-lab
-site_description: Laboratório aberto de engenharia de IA. Da arquitetura de prompts a agentes em produção.
+site_description: Laboratório aberto de prática e engenharia de IA. Da arquitetura de prompts a agentes em produção.
 site_url: https://leozitogs.github.io/agentic-lab/
 repo_url: https://github.com/leozitogs/agentic-lab
 repo_name: leozitogs/agentic-lab
@@ -70,6 +70,17 @@ nav:
   - Início:
       - README.md
       - Roadmap: ROADMAP.md
+  - Participe:
+      - Como contribuir: CONTRIBUTING.md
+      - Matriz de contribuições e escuta: ops/MATRIZ-DE-CONTRIBUICOES.md
+      - Guia completo: ops/CONTRIBUTING.md
+      - Ambiente técnico: ops/DEVELOPMENT.md
+      - Vivências: learn/notes/README.md
+      - Template de experiência: learn/notes/EXPERIENCE-TEMPLATE.md
+      - Governança: ops/GOVERNANCE.md
+      - Operação do GitHub: ops/GITHUB.md
+      - Código de conduta: CODE_OF_CONDUCT.md
+      - Relatar vulnerabilidade: SECURITY.md
   - Fundamentos:
       - Visão geral: learn/roadmap/00-overview.md
       - Semana 1 · Fundamentos: learn/roadmap/01-fundamentos.md
@@ -129,6 +140,7 @@ nav:
           - ADR-0001 · Estrutura do repositório: ops/decisions/ADR-0001-estrutura-do-repo.md
           - ADR-0002 · Trilha avançada: ops/decisions/ADR-0002-trilha-avancada.md
           - ADR-0003 · Recuperação padrão para RAG: ops/decisions/ADR-0003-recuperacao-padrao-rag.md
+          - ADR-0005 · Contribuição e governança: ops/decisions/ADR-0005-contribuicao-e-governanca.md
           - ADR-0004 · Mitigações padrão para agentes com ferramentas: ops/decisions/ADR-0004-mitigacoes-prompt-injection.md
       - Segurança:
           - ops/security/README.md

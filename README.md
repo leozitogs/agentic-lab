@@ -1,13 +1,13 @@
 # agentic-lab
 
-> Laboratório aberto de **engenharia de IA**.
+> Laboratório aberto de **prática e engenharia de IA**.
 > Da arquitetura de prompts a agentes em produção: tudo que aprendemos vira artefato reutilizável.
 >
 > 📖 Leia como site: **[leozitogs.github.io/agentic-lab](https://leozitogs.github.io/agentic-lab/)**
 
 ## O que é isso
 
-Este repositório é um **playbook vivo** para times que querem ir além de "usar IA" e começar a **construir sistemas com IA**. Não é um curso, não é um blog, não é uma coleção de links. É uma máquina de transformar estudo em entregável.
+Este repositório é um **playbook vivo** para pessoas e equipes que utilizam, estudam e constroem com IA. Reúne vivências de diferentes áreas, conhecimento de domínio e engenharia para transformar perguntas e práticas em aprendizado compartilhado e artefatos reutilizáveis.
 
 A regra fundadora é simples: **toda coisa que entra aqui precisa responder seis perguntas**.
 
@@ -18,7 +18,7 @@ A regra fundadora é simples: **toda coisa que entra aqui precisa responder seis
 5. Como avaliar?
 6. Como melhorar?
 
-Se a resposta a alguma delas for "não sei", o artefato ainda não está pronto pra entrar.
+Essas perguntas orientam a evolução dos artefatos. Experiências em andamento podem entrar como `draft`, com incertezas explícitas e um próximo passo de colaboração.
 
 ## Objeto de estudo
 
@@ -72,6 +72,17 @@ agentic-lab/
 ```
 
 A separação `/learn` vs `/build` é proposital. Estudar é diferente de entregar, e misturar os dois cria confusão sobre o que é maduro e o que é rascunho.
+
+## Participe do laboratório
+
+Você pode chegar com uma pergunta, relatar uma tentativa, compartilhar conhecimento de design, pedagogia, administração ou qualquer outra área, acolher participantes, revisar ou construir artefatos. O trabalho é assíncrono e inclui pessoas em diferentes etapas de aprendizado. A escuta ativa faz parte da formulação de problemas e das decisões.
+
+- [Matriz de contribuições e escuta ativa](ops/MATRIZ-DE-CONTRIBUICOES.md) — modalidades, critérios e apoio para participar.
+- [Como contribuir](CONTRIBUTING.md) — primeira tarefa, fork, PR e critérios de revisão.
+- [Vivências e aprendizados](learn/notes/README.md) — relatos, dúvidas e resultados negativos.
+- [Ambiente técnico](ops/DEVELOPMENT.md) — execute `python scripts/check.py` para verificar o núcleo offline.
+- [Governança](ops/GOVERNANCE.md) — papéis, decisões, crédito e manutenção.
+- [Abra uma issue](https://github.com/leozitogs/agentic-lab/issues/new/choose) — problema, proposta ou experiência.
 
 ## Por onde começar
 

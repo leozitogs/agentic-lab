@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Orientação para contribuir
+    url: https://github.com/leozitogs/agentic-lab/blob/main/CONTRIBUTING.md
+    about: Caminhos para começar, compartilhar vivências e preparar um PR.

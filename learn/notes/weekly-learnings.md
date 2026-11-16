@@ -9,7 +9,7 @@ atualizado_em: 2026-05-28
 
 # Aprendizados semanais
 
-Registro contínuo do que foi aprendido, falhou ou surpreendeu. Toda sexta, durante a reunião, alguém edita este arquivo.
+Registro contínuo do que foi aprendido, falhou ou surpreendeu. Qualquer participante pode propor uma entrada por PR ou começar por uma issue. Reuniões, quando acontecerem, podem usar os registros como pauta. Relatos individuais e reproduções têm espaço no [índice de vivências](README.md).
 
 ## Formato de cada entrada
 

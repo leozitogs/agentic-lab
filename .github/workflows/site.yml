@@ -12,15 +12,20 @@ on:
       - 'site/**'
       - 'scripts/build_site.py'
       - '.github/workflows/site.yml'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - 'mkdocs.yml'
+      - 'site/**'
+      - 'scripts/build_site.py'
+      - '.github/workflows/site.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -38,18 +43,23 @@ jobs:
       - name: Preparar páginas
         run: python scripts/build_site.py
       - name: Gerar site
-        run: mkdocs build
-      - uses: actions/configure-pages@v5
+        run: mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: _site
 
   deploy:
+    if: github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/configure-pages@v5
       - id: deployment
         uses: actions/deploy-pages@v4

@@ -1,0 +1,25 @@
+name: Propor uma contribuição
+description: Proponha melhoria, experimento, estudo ou primeira tarefa.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qual problema ou pergunta você quer trabalhar?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Qual entrega você imagina?
+      description: Indique o escopo, artefatos existentes e alternativas que gostaria de comparar.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Como reconhecer uma contribuição concluída?
+      description: Sugira reprodução, revisão ou medida. Se precisar de ajuda para definir, diga aqui.
+  - type: textarea
+    id: participation
+    attributes:
+      label: Como você gostaria de participar?
+      description: Estudo, implementação, revisão, relato ou acompanhamento. Fontes e referências são bem-vindas.
