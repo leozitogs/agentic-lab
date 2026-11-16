@@ -34,4 +34,4 @@ Proteção de branches permite exigir verificações e impedir reescrita do hist
 
 ## Relatos privados de vulnerabilidade
 
-O recurso nativo de private vulnerability reporting foi habilitado nesta organização do laboratório. O procedimento está em [SECURITY.md](../SECURITY.md). Um administrador pode verificar seu estado com `gh api repos/leozitogs/agentic-lab/private-vulnerability-reporting`. Esse canal trata de segurança técnica. O contato privado próprio para conduta ainda precisa ser definido pelo mantenedor.
+O recurso nativo de private vulnerability reporting foi habilitado nesta organização do laboratório. O procedimento está em [SECURITY.md](../SECURITY.md). Um administrador pode verificar seu estado com `gh api repos/leozitogs/agentic-lab/private-vulnerability-reporting`. Esse canal trata de segurança técnica. Relatos de conduta e acolhimento podem ser enviados para [agenticlab.playbook@gmail.com](mailto:agenticlab.playbook@gmail.com), conforme o código de conduta.

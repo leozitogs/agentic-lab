@@ -4,7 +4,7 @@ O projeto publica artefatos experimentais. A manutenção se concentra na branch
 
 ## Como relatar
 
-Para vulnerabilidades ou exposição de credenciais, use [Report a vulnerability](https://github.com/leozitogs/agentic-lab/security/advisories/new), canal privado habilitado no repositório. Se estiver indisponível, abra uma issue pedindo um canal privado, sem incluir exploração, dados pessoais ou segredos. O mantenedor combinará um canal antes de receber esses detalhes. Não há prazo de resposta garantido.
+Para vulnerabilidades ou exposição de credenciais, use [Report a vulnerability](https://github.com/leozitogs/agentic-lab/security/advisories/new), canal privado habilitado no repositório. Se estiver indisponível, escreva para [agenticlab.playbook@gmail.com](mailto:agenticlab.playbook@gmail.com) para coordenar o relato em privado. Não há prazo de resposta garantido.
 
 Inclua em privado a revisão afetada, passos mínimos de reprodução com dados sintéticos, impacto e uma sugestão de correção quando houver. Aguarde coordenação com o mantenedor antes de publicar detalhes que exponham pessoas ou sistemas.
 
