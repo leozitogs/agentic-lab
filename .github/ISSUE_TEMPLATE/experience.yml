@@ -1,0 +1,21 @@
+name: Compartilhar uma vivência ou pedir ajuda
+description: Conte uma tentativa, resultado negativo, dúvida ou prática que possa virar aprendizado coletivo.
+labels: [question]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Qual é o contexto?
+      description: Conte sua pergunta ou experiência com o nível de detalhe que tiver disponível.
+    validations:
+      required: true
+  - type: textarea
+    id: attempt
+    attributes:
+      label: O que você tentou e observou?
+      description: Falhas e dúvidas são parte do aprendizado. Compartilhe apenas dados públicos ou sintéticos.
+  - type: textarea
+    id: collaboration
+    attributes:
+      label: O que gostaria de explorar com o lab?
+      description: Peça revisão, reprodução, referência ou parceria. Podemos transformar a conversa em nota ou experimento.

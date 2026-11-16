@@ -18,7 +18,7 @@ A regra fundadora é simples: **toda coisa que entra aqui precisa responder seis
 5. Como avaliar?
 6. Como melhorar?
 
-Se a resposta a alguma delas for "não sei", o artefato ainda não está pronto pra entrar.
+Essas perguntas orientam a evolução dos artefatos. Experiências em andamento podem entrar como `draft`, com incertezas explícitas e um próximo passo de colaboração.
 
 ## Objeto de estudo
 
@@ -72,6 +72,16 @@ agentic-lab/
 ```
 
 A separação `/learn` vs `/build` é proposital. Estudar é diferente de entregar, e misturar os dois cria confusão sobre o que é maduro e o que é rascunho.
+
+## Participe do laboratório
+
+Você pode chegar com uma pergunta, relatar uma tentativa, reproduzir um experimento, revisar documentação ou contribuir com código. O trabalho é assíncrono e inclui pessoas em diferentes etapas de aprendizado.
+
+- [Como contribuir](CONTRIBUTING.md) — primeira tarefa, fork, PR e critérios de revisão.
+- [Vivências e aprendizados](learn/notes/README.md) — relatos, dúvidas e resultados negativos.
+- [Ambiente técnico](ops/DEVELOPMENT.md) — execute `python scripts/check.py` para verificar o núcleo offline.
+- [Governança](ops/GOVERNANCE.md) — papéis, decisões, crédito e manutenção.
+- [Abra uma issue](https://github.com/leozitogs/agentic-lab/issues/new/choose) — problema, proposta ou experiência.
 
 ## Por onde começar
 

@@ -1,0 +1,22 @@
+name: Relatar um problema
+description: Ajude a reproduzir uma falha no código, conteúdo ou ambiente.
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: O que aconteceu e o que você esperava?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Como reproduzir?
+      description: Informe passos, comando, revisão do Git, sistema e versões relevantes. Use dados sintéticos.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências e ajuda necessária
+      description: Inclua a saída relevante e o que já tentou. Remova segredos e informações pessoais.

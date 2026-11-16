@@ -1,82 +1,85 @@
 # Como contribuir
 
-Bem-vindo. Antes de abrir um PR, leia este arquivo inteiro. Ele é curto.
+Você pode contribuir com documentação, perguntas, vivências, código, revisão e reprodução de experimentos. Conhecimento prévio de todas as ferramentas do laboratório pode ser construído durante a contribuição.
 
-## A regra das seis perguntas
+## Escolha um caminho
 
-Toda contribuição precisa responder, na descrição do PR ou no próprio arquivo:
+| Quero participar com | Comece por | Entrega possível |
+|---|---|---|
+| Uma dúvida ou tentativa | [Issue de vivência](https://github.com/leozitogs/agentic-lab/issues/new/choose) | Discussão e próximos passos |
+| Uma experiência prática | [Template de relato](../learn/notes/EXPERIENCE-TEMPLATE.md) | Nota em `learn/notes/` com maturidade draft |
+| Documentação ou tradução | Página que gerou dificuldade | PR pequeno explicando a melhoria |
+| Reprodução ou revisão | README do artefato escolhido | Ambiente, comandos, resultado e diferenças observadas |
+| Um novo artefato | [Roadmap](../ROADMAP.md) e templates abaixo | Proposta e PR com evidência |
+| Código e infraestrutura | [Ambiente técnico](DEVELOPMENT.md) | Mudança focada e verificação reproduzível |
 
-1. O que aprendemos?
-2. Como reproduzir?
-3. Quando usar?
-4. Quando NÃO usar?
-5. Como avaliar?
-6. Como melhorar?
+Veja [good first issue](https://github.com/leozitogs/agentic-lab/labels/good%20first%20issue) e [help wanted](https://github.com/leozitogs/agentic-lab/labels/help%20wanted). Se a lista estiver vazia, proponha uma tarefa ou use uma destas sugestões de entrada, que ainda precisam ser combinadas em issue.
 
-PRs que não respondem essas perguntas são fechados sem revisão.
+- Reproduzir o núcleo offline em um ambiente diferente e relatar dificuldades.
+- Revisar uma definição do glossário com fonte e exemplo.
+- Reproduzir uma pergunta do kit de RAG e explicar um erro de recuperação.
+- Compartilhar uma tentativa com agente de código, incluindo resultado negativo e condições de reprodução.
+
+## Do primeiro contato ao PR
+
+1. Leia o [código de conduta](../CODE_OF_CONDUCT.md) e escolha um escopo pequeno. Correções simples podem ir direto para PR. Para mudanças maiores, abra proposta para discutir objetivo e critério de conclusão.
+2. Faça um fork pelo GitHub se você não tem acesso de escrita. Clone seu fork e adicione o original como upstream. Quem tem escrita pode clonar o original e trabalhar em uma branch.
+3. Crie uma branch a partir da main atualizada. Use `tipo/descricao-curta`, por exemplo `docs/primeiro-relato` ou `eval/novo-caso`.
+4. Construa a contribuição. Use PR em rascunho para receber orientação cedo. Declare dúvidas, limites e verificações ainda pendentes.
+5. Execute `python scripts/check.py` para mudanças técnicas. Para conteúdo, revise a clareza, as fontes e os metadados. A CI também verifica o núcleo automaticamente.
+6. Abra PR para `leozitogs/agentic-lab:main`, preencha o template e vincule a issue quando existir. Solicite revisão e responda às observações.
+7. Após integração, registre aprendizados e referências cruzadas quando houver novo conhecimento. A participação ocorre de forma assíncrona.
+
+```bash
+# Após criar seu fork, substitua SEU-USUARIO.
+git clone https://github.com/SEU-USUARIO/agentic-lab.git
+cd agentic-lab
+git remote add upstream https://github.com/leozitogs/agentic-lab.git
+git fetch upstream
+git switch -c docs/primeiro-relato upstream/main
+python scripts/check.py
+git add learn/notes/seu-relato.md
+git commit -m "docs: registrar experiência reproduzível"
+git push -u origin docs/primeiro-relato
+```
+
+No PowerShell ou no terminal Linux/macOS, esses comandos Git têm a mesma forma. Configure nome e e-mail do Git conforme a autoria desejada, usando o endereço privado do GitHub se preferir. O arquivo do exemplo precisa ser criado antes de `git add`.
+
+## As seis perguntas
+
+Uma contribuição deve ajudar a responder o que aprendemos, como reproduzir, quando usar, quando as condições deixam de valer, como avaliar e como melhorar. O template de PR oferece essas perguntas. Correções pequenas podem reuni-las em uma explicação curta. Incertezas e resultados negativos podem ser registrados com maturidade `draft`. Quem revisa ajuda a completar contexto e critérios.
 
 ## Tipos de contribuição
 
 | Tipo | Pasta | Template |
-|------|-------|----------|
-| Prompt | `build/prompts/` | `build/prompts/PROMPT-TEMPLATE.md` |
-| Skill | `build/skills/` | `build/skills/skill-template/SKILL.md` |
-| MCP server | `build/mcp-servers/` | `build/mcp-servers/mcp-template/` |
-| Avaliação | `build/evaluations/` | `build/evaluations/EVAL-TEMPLATE.md` |
-| Caso de uso | `cases/` | `cases/CASE-TEMPLATE.md` |
-| Nota de estudo | `learn/notes/` | livre |
-| Decisão técnica | `ops/decisions/` | `ops/decisions/ADR-TEMPLATE.md` |
+|---|---|---|
+| Prompt | `build/prompts/` | [Prompt](../build/prompts/PROMPT-TEMPLATE.md) |
+| Skill | `build/skills/` | [Skill](../build/skills/skill-template/SKILL.md) |
+| MCP server | `build/mcp-servers/` | [MCP](../build/mcp-servers/mcp-template/README.md) |
+| Avaliação | `build/evaluations/` | [Eval](../build/evaluations/EVAL-TEMPLATE.md) |
+| Caso de uso | `cases/` | [Caso](../cases/CASE-TEMPLATE.md) |
+| Vivência e nota | `learn/notes/` | [Relato](../learn/notes/EXPERIENCE-TEMPLATE.md) |
+| Decisão técnica | `ops/decisions/` | [ADR](decisions/ADR-TEMPLATE.md) |
 
-## Fluxo de PR
+## Critérios de revisão
 
-1. Crie uma branch a partir de `main` no padrão `tipo/descricao-curta` (ex.: `prompt/research-synthesis`).
-2. Adicione o artefato com front-matter completo (ver `ops/TAGS.md`).
-3. Se for prompt, skill ou MCP, faça pelo menos uma avaliação inicial.
-4. Atualize o índice da pasta correspondente, se houver.
-5. Abra PR. Use o template de PR do GitHub (a ser adicionado em `.github/`).
-6. Pelo menos uma pessoa da equipe revisa.
-7. Apresente na próxima reunião semanal.
+| Contribuição | Evidência esperada |
+|---|---|
+| Correção de conteúdo | Explicação da mudança, fontes quando aplicável e leitura dos links |
+| Relato de experiência | Contexto, passos, observações e limites, mesmo em draft |
+| Código | Comportamento esperado, verificações relevantes e tratamento de falhas |
+| Prompt ou skill | Exemplo e avaliação inicial compatível com a maturidade |
+| MCP | Interfaces, testes e análise de permissões e segurança |
+| Experimento | Dados, versões, critérios, comandos e resultados rastreáveis |
 
-## Padrão de commits
+Revise comportamento existente e compatibilidade. Use dados públicos ou sintéticos e materiais que você tenha direito de compartilhar. Relatos profissionais devem remover identificadores e respeitar consentimento. Segredos e vulnerabilidades seguem [SECURITY.md](../SECURITY.md).
 
-Convencional:
+## Convenções e maturidade
 
-```
-feat: descrição
-docs: descrição
-prompt: descrição
-skill: descrição
-mcp: descrição
-eval: descrição
-fix: descrição
-refactor: descrição
-```
+Commits usam prefixos como `feat:`, `fix:`, `docs:`, `eval:`, `skill:`, `mcp:`, `prompt:` e `refactor:`. Mensagens podem ser em português ou inglês, com consistência dentro da contribuição. Pastas e arquivos usam kebab-case, preservando os nomes convencionais existentes.
 
-Mensagens em português ou inglês — coerência interna do PR é o que importa.
+Documentação humana fica em PT-BR. Prompts e instruções operacionais consumidos por agentes ficam em inglês conforme a convenção do laboratório. Relatos e perguntas podem ser apresentados no idioma em que a pessoa consegue participar; a revisão ajuda a incorporar o conteúdo ao padrão do repositório.
 
-## Idioma
+Artefatos em learn, build, cases e decisões usam o front-matter de [TAGS.md](TAGS.md). `draft` indica trabalho em construção. `tested` exige evidência registrada pelo autor. `reviewed` exige revisão de outra pessoa. `adopted` indica padrão aceito pelo time. Preserve autores, fontes e limites ao evoluir um artefato.
 
-- Documentação humana, descrições, comentários de PR: **PT-BR**.
-- System prompts, instruções para agentes, exemplos consumidos por LLM: **EN**.
-- Front-matter (`name`, `description`): **EN** se o artefato é consumido por agente, **PT** se é só documentação.
-
-Esse padrão existe porque LLMs costumam performar melhor em inglês para instruções operacionais, mas a equipe trabalha em português.
-
-## Maturidade
-
-Use a tag `maturidade` no front-matter:
-
-- `draft` — rascunho, ainda em construção.
-- `tested` — testado pelo autor, mas sem revisão de outra pessoa.
-- `reviewed` — passou por revisão de pelo menos um colega.
-- `adopted` — virou padrão do time, é referência para novos artefatos.
-
-Não promova artefato sem evidência.
-
-## O que NÃO aceitar no repo
-
-- Prompt sem teste documentado.
-- Skill sem critério de uso claro.
-- MCP sem análise de segurança.
-- "Cole aqui o link do ChatGPT que ele resolve" — isso não é artefato.
-- Conteúdo que dependa de informação interna não compartilhável.
+O [modelo de governança](GOVERNANCE.md) descreve quem decide, como novos mantenedores entram e como integrar contribuições enquanto o laboratório tem um único mantenedor. Assistência de IA relevante para código, resultados ou conclusões deve ser descrita junto de sua validação.
