@@ -1,11 +1,19 @@
 # Como contribuir
 
-Você pode contribuir com documentação, perguntas, vivências, código, revisão e reprodução de experimentos. Conhecimento prévio de todas as ferramentas do laboratório pode ser construído durante a contribuição.
+Você pode contribuir com vivências de uso de IA, conhecimento de sua área, perguntas, escuta, documentação, revisão, pesquisa e código. Design, pedagogia, administração e qualquer outra área têm espaço no laboratório. A [matriz de contribuições e escuta ativa](MATRIZ-DE-CONTRIBUICOES.md) define modalidades, critérios de revisão e apoio para participar.
+
+## Comece no formato que funciona para você
+
+Conte o contexto e o que gostaria de compartilhar ou compreender em uma [issue](https://github.com/leozitogs/agentic-lab/issues/new/choose) ou pelo contato [agenticlab.playbook@gmail.com](mailto:agenticlab.playbook@gmail.com). O mantenedor pode combinar ajuda para organizar o relato e preparar os arquivos. A publicação de conteúdo recebido em privado depende da sua autorização e validação da síntese. Os prazos e o apoio são combinados conforme disponibilidade.
+
+Você pode participar de uma conversa, revisar pela perspectiva de sua área ou trazer uma necessidade. A escolha de transformar isso em artefato é feita com você. Consulte o [processo de escuta ativa](MATRIZ-DE-CONTRIBUICOES.md#escuta-ativa-como-parte-do-trabalho).
 
 ## Escolha um caminho
 
 | Quero participar com | Comece por | Entrega possível |
 |---|---|---|
+| Conhecimento de uma área | [Matriz de contribuições](MATRIZ-DE-CONTRIBUICOES.md) | Critérios, exemplos ou revisão de domínio |
+| Escuta e facilitação | [Processo de escuta](MATRIZ-DE-CONTRIBUICOES.md#escuta-ativa-como-parte-do-trabalho) | Síntese validada e devolutiva |
 | Uma dúvida ou tentativa | [Issue de vivência](https://github.com/leozitogs/agentic-lab/issues/new/choose) | Discussão e próximos passos |
 | Uma experiência prática | [Template de relato](../learn/notes/EXPERIENCE-TEMPLATE.md) | Nota em `learn/notes/` com maturidade draft |
 | Documentação ou tradução | Página que gerou dificuldade | PR pequeno explicando a melhoria |
@@ -15,12 +23,15 @@ Você pode contribuir com documentação, perguntas, vivências, código, revis�
 
 Veja [good first issue](https://github.com/leozitogs/agentic-lab/labels/good%20first%20issue) e [help wanted](https://github.com/leozitogs/agentic-lab/labels/help%20wanted). Se a lista estiver vazia, proponha uma tarefa ou use uma destas sugestões de entrada, que ainda precisam ser combinadas em issue.
 
+- Compartilhar uma experiência de uso de IA em sua área, com o resultado e as dificuldades percebidas.
+- Revisar um exemplo com critérios de design, educação, administração ou outra prática.
+- Ajudar a acolher e organizar um relato com validação da pessoa que o trouxe.
 - Reproduzir o núcleo offline em um ambiente diferente e relatar dificuldades.
 - Revisar uma definição do glossário com fonte e exemplo.
 - Reproduzir uma pergunta do kit de RAG e explicar um erro de recuperação.
 - Compartilhar uma tentativa com agente de código, incluindo resultado negativo e condições de reprodução.
 
-## Do primeiro contato ao PR
+## Para contribuir por PR
 
 1. Leia o [código de conduta](../CODE_OF_CONDUCT.md) e escolha um escopo pequeno. Correções simples podem ir direto para PR. Para mudanças maiores, abra proposta para discutir objetivo e critério de conclusão.
 2. Faça um fork pelo GitHub se você não tem acesso de escrita. Clone seu fork e adicione o original como upstream. Quem tem escrita pode clonar o original e trabalhar em uma branch.
@@ -66,7 +77,9 @@ Uma contribuição deve ajudar a responder o que aprendemos, como reproduzir, qu
 | Contribuição | Evidência esperada |
 |---|---|
 | Correção de conteúdo | Explicação da mudança, fontes quando aplicável e leitura dos links |
-| Relato de experiência | Contexto, passos, observações e limites, mesmo em draft |
+| Relato de experiência | Contexto, processo em linguagem cotidiana, observações e limites, mesmo em draft |
+| Revisão de domínio | Critérios da área, exemplos e alcance da interpretação |
+| Escuta e facilitação | Síntese validada, consentimento e devolutiva combinada |
 | Código | Comportamento esperado, verificações relevantes e tratamento de falhas |
 | Prompt ou skill | Exemplo e avaliação inicial compatível com a maturidade |
 | MCP | Interfaces, testes e análise de permissões e segurança |

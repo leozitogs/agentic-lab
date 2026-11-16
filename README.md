@@ -1,13 +1,13 @@
 # agentic-lab
 
-> Laboratório aberto de **engenharia de IA**.
+> Laboratório aberto de **prática e engenharia de IA**.
 > Da arquitetura de prompts a agentes em produção: tudo que aprendemos vira artefato reutilizável.
 >
 > 📖 Leia como site: **[leozitogs.github.io/agentic-lab](https://leozitogs.github.io/agentic-lab/)**
 
 ## O que é isso
 
-Este repositório é um **playbook vivo** para times que querem ir além de "usar IA" e começar a **construir sistemas com IA**. Não é um curso, não é um blog, não é uma coleção de links. É uma máquina de transformar estudo em entregável.
+Este repositório é um **playbook vivo** para pessoas e equipes que utilizam, estudam e constroem com IA. Reúne vivências de diferentes áreas, conhecimento de domínio e engenharia para transformar perguntas e práticas em aprendizado compartilhado e artefatos reutilizáveis.
 
 A regra fundadora é simples: **toda coisa que entra aqui precisa responder seis perguntas**.
 
@@ -75,8 +75,9 @@ A separação `/learn` vs `/build` é proposital. Estudar é diferente de entreg
 
 ## Participe do laboratório
 
-Você pode chegar com uma pergunta, relatar uma tentativa, reproduzir um experimento, revisar documentação ou contribuir com código. O trabalho é assíncrono e inclui pessoas em diferentes etapas de aprendizado.
+Você pode chegar com uma pergunta, relatar uma tentativa, compartilhar conhecimento de design, pedagogia, administração ou qualquer outra área, acolher participantes, revisar ou construir artefatos. O trabalho é assíncrono e inclui pessoas em diferentes etapas de aprendizado. A escuta ativa faz parte da formulação de problemas e das decisões.
 
+- [Matriz de contribuições e escuta ativa](ops/MATRIZ-DE-CONTRIBUICOES.md) — modalidades, critérios e apoio para participar.
 - [Como contribuir](CONTRIBUTING.md) — primeira tarefa, fork, PR e critérios de revisão.
 - [Vivências e aprendizados](learn/notes/README.md) — relatos, dúvidas e resultados negativos.
 - [Ambiente técnico](ops/DEVELOPMENT.md) — execute `python scripts/check.py` para verificar o núcleo offline.

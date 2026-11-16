@@ -4,7 +4,7 @@ maturidade: draft
 versao: 0.1.0
 autores: [leozitogs]
 criado_em: 2026-11-15
-atualizado_em: 2026-11-15
+atualizado_em: 2026-11-16
 status: proposto
 ---
 
@@ -16,7 +16,7 @@ O laboratório já possui trilhas, artefatos, testes e publicação. O guia de c
 
 ## Proposta
 
-Adotar entrada pública pelo CONTRIBUTING da raiz, issues para bugs/propostas/vivências, notas em draft, processo assíncrono e critérios proporcionais ao impacto. Definir papéis, crédito, revisão humana e limites da revisão por IA. Manter a organização learn/build/cases/ops existente.
+Adotar entrada pública pelo CONTRIBUTING da raiz, issues para bugs/propostas/vivências, notas em draft, processo assíncrono e critérios proporcionais ao impacto. Definir papéis, crédito, revisão humana e limites da revisão por IA. A matriz de contribuições reconhece vivências e conhecimento de qualquer área, com critérios adequados a cada modalidade. Relatos mediados incluem escuta ativa, síntese validada, consentimento de publicação e devolutiva. A participação pode começar por issue ou contato privado, com apoio para organizar arquivos e metadados. Manter a organização learn/build/cases/ops existente.
 
 Oferecer `python scripts/check.py` como entrada técnica offline. Executar o check agregado `lab-check` em todo PR, em Linux e Windows. Verificar build do site em PRs. Versionar a proteção da main com PR e CI obrigatórios, resolução de conversas e bloqueio de force push e exclusão. Começar com zero aprovações obrigatórias enquanto há um mantenedor, mantendo revisão de outra pessoa como condição para maturidade reviewed.
 

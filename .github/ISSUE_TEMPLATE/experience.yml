@@ -1,14 +1,36 @@
 name: Compartilhar uma vivência ou pedir ajuda
-description: Conte uma tentativa, resultado negativo, dúvida ou prática que possa virar aprendizado coletivo.
+description: Compartilhe uma prática de qualquer área, uma dúvida ou um pedido de escuta e colaboração.
 labels: [question]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Pessoas de qualquer área podem participar em linguagem cotidiana. Esta issue é pública. Para combinar uma conversa privada ou receber ajuda para organizar seu relato, escreva para agenticlab.playbook@gmail.com. A matriz de contribuições e escuta ativa orienta o acolhimento e a devolutiva.
   - type: textarea
     id: context
     attributes:
       label: Qual é o contexto?
-      description: Conte sua pergunta ou experiência com o nível de detalhe que tiver disponível.
+      description: Conte sua pergunta, necessidade ou experiência com o detalhe disponível. Uma primeira mensagem já permite começar a conversa.
     validations:
       required: true
+  - type: input
+    id: area
+    attributes:
+      label: De qual área ou prática você traz essa experiência?
+      description: Se quiser, conte seu contexto, como design, educação, administração ou uso cotidiano.
+  - type: dropdown
+    id: intention
+    attributes:
+      label: O que você gostaria de encontrar neste contato?
+      multiple: true
+      options:
+        - Compartilhar e ser ouvido
+        - Receber ajuda para organizar um relato
+        - Conversar sobre uma dúvida ou dificuldade
+        - Receber retorno de alguém da minha área
+        - Buscar parceria para investigar ou experimentar
+        - Propor uma melhoria ou implementação
+        - Ainda quero entender as possibilidades
   - type: textarea
     id: attempt
     attributes:
@@ -19,3 +41,8 @@ body:
     attributes:
       label: O que gostaria de explorar com o lab?
       description: Peça revisão, reprodução, referência ou parceria. Podemos transformar a conversa em nota ou experimento.
+  - type: textarea
+    id: support
+    attributes:
+      label: Como podemos facilitar sua participação?
+      description: Se desejar, indique uma preferência de linguagem, forma de interação ou ajuda necessária. Preserve informações pessoais e combine detalhes sensíveis pelo canal privado.

@@ -2,13 +2,17 @@
 
 ## Propósito e participação
 
-O laboratório reúne estudo, prática e evidência sobre engenharia de IA. Pessoas podem propor, experimentar, revisar e manter artefatos. Participação assíncrona por issues e PRs permite acompanhar decisões e contribuir em qualquer ritmo.
+O laboratório reúne vivências, conhecimentos de diferentes áreas, estudo, prática e evidência sobre o uso e a engenharia de IA. Pessoas podem propor, experimentar, revisar e manter artefatos. Participação assíncrona por issues e PRs permite acompanhar decisões e contribuir em qualquer ritmo.
+
+A [matriz de contribuições e escuta ativa](MATRIZ-DE-CONTRIBUICOES.md) orienta a participação de qualquer área, o apoio a quem chega e a avaliação proporcional à modalidade. Pessoas que vivem os problemas participam da formulação das necessidades e dos critérios de sucesso.
 
 ## Papéis atuais
 
 | Papel | Responsabilidade | Como participar |
 |---|---|---|
 | Participante | Perguntar, relatar experiências, propor e executar contribuições | Abrir issue, comentar ou enviar PR |
+| Facilitador de escuta | Acolher, devolver entendimento, combinar consentimento e acompanhar encaminhamentos | Combinar atuação voluntária com o mantenedor |
+| Revisor de domínio | Avaliar adequação à prática de uma área e seus critérios | Revisar exemplos, materiais e resultados com sua experiência |
 | Revisor | Conferir escopo, reprodução, resultados e clareza | Comentar evidências e limites em PRs |
 | Mantenedor | Fazer triagem, decidir integração, cuidar de acessos e releases | Nomeação pública após contribuições e concordância explícita |
 
@@ -16,9 +20,9 @@ O mantenedor atual é Leonardo Gonçalves Sobral, [@leozitogs](https://github.co
 
 ## Decisões
 
-Correções pequenas seguem direto para PR. Mudanças de arquitetura, padrões de segurança, critérios científicos ou governança começam com uma proposta em issue e registram a decisão em `ops/decisions/` usando o template de ADR. O mantenedor procura consenso nos argumentos, registra objeções e explica a decisão quando houver divergência. Questões podem ser reabertas com novas evidências.
+Correções pequenas seguem direto para PR. Mudanças de arquitetura, padrões de segurança, critérios científicos ou governança começam com uma proposta em issue e registram a decisão em `ops/decisions/` usando o template de ADR. O mantenedor procura consenso nos argumentos, registra objeções e explica a decisão quando houver divergência. Em demandas originadas de vivências, confirma o entendimento com quem trouxe o relato e devolve o encaminhamento. Registros privados são publicados após autorização explícita. Questões podem ser reabertas com novas evidências.
 
-Uma issue deve deixar explícitos problema, responsável voluntário, próximo passo e critério de conclusão. Ninguém precisa assumir uma tarefa para fazer uma pergunta. PRs em rascunho recebem feedback durante a construção. Issues paradas podem ser retomadas por outra pessoa, com aviso no próprio tópico e preservação do crédito.
+Ao encaminhar uma proposta para execução, registre problema, responsável voluntário, próximo passo e critério de conclusão. Perguntas e relatos podem começar com o contexto disponível e receber apoio para essa organização. Ninguém precisa assumir uma tarefa para fazer uma pergunta. PRs em rascunho recebem feedback durante a construção. Issues paradas podem ser retomadas por outra pessoa, com aviso no próprio tópico e preservação do crédito.
 
 ## Revisão e integração
 

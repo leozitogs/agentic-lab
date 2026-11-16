@@ -13,6 +13,10 @@ Descreva a contribuição e vincule a issue quando houver. Explique o que muda p
 
 Para correções pequenas, uma resposta curta pode reunir os pontos pertinentes. Relatos em andamento podem declarar incertezas e maturidade draft.
 
+## Participação e escuta, quando aplicável
+
+Em contribuições originadas de uma vivência ou necessidade, indique como o entendimento foi confirmado com a pessoa, que conhecimento de domínio orientou os critérios e qual devolutiva foi combinada. Para relatos mediados, confirme autorização de publicação e crédito. Registre apenas as informações autorizadas para o espaço público.
+
 ## Revisão
 
 - [ ] Escopo e limitações descritos.

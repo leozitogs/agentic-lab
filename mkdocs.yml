@@ -1,5 +1,5 @@
 site_name: agentic-lab
-site_description: Laboratório aberto de engenharia de IA. Da arquitetura de prompts a agentes em produção.
+site_description: Laboratório aberto de prática e engenharia de IA. Da arquitetura de prompts a agentes em produção.
 site_url: https://leozitogs.github.io/agentic-lab/
 repo_url: https://github.com/leozitogs/agentic-lab
 repo_name: leozitogs/agentic-lab
@@ -72,6 +72,7 @@ nav:
       - Roadmap: ROADMAP.md
   - Participe:
       - Como contribuir: CONTRIBUTING.md
+      - Matriz de contribuições e escuta: ops/MATRIZ-DE-CONTRIBUICOES.md
       - Guia completo: ops/CONTRIBUTING.md
       - Ambiente técnico: ops/DEVELOPMENT.md
       - Vivências: learn/notes/README.md

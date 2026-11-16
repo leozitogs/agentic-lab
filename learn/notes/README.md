@@ -9,7 +9,9 @@ atualizado_em: 2026-11-15
 
 # Vivências e aprendizados
 
-Este espaço reúne tentativas, dúvidas, reproduções e aprendizados de quem participa do laboratório. Uma experiência pode começar como issue e evoluir para uma nota em rascunho. Quem lê pode reproduzir, questionar ou ampliar os resultados em uma contribuição vinculada.
+Este espaço reúne tentativas, dúvidas, reproduções e aprendizados de quem utiliza IA em qualquer área. Relatos de design, educação, gestão e outras práticas ajudam a definir problemas e critérios para o laboratório. Uma experiência pode começar como issue e evoluir para uma nota em rascunho. Quem lê pode reproduzir, questionar ou ampliar os resultados em uma contribuição vinculada.
+
+A [matriz de contribuições e escuta ativa](../../ops/MATRIZ-DE-CONTRIBUICOES.md) explica como compartilhar conhecimento, receber apoio e validar uma síntese antes da publicação. Quem preferir pode começar pelo contato privado e combinar ajuda para organizar os arquivos.
 
 Use o [template de experiência](EXPERIENCE-TEMPLATE.md), salve uma cópia com um nome descritivo e registre autoria, contexto e limitações. Adicione o relato ao índice abaixo. Para propor um relato sem usar Git, abra uma [issue de vivência](https://github.com/leozitogs/agentic-lab/issues/new/choose).
 
